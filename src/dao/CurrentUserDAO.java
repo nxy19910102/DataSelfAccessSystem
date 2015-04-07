@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionBindingEvent;
 import javax.servlet.http.HttpSessionEvent;
 
 import entity.CurrentUser;
@@ -28,40 +27,12 @@ public class CurrentUserDAO {
 		context.setAttribute("currentUserNumber", currentUserList.size());
 	}
 	
+//	SessionListener
 	@SuppressWarnings("unchecked")
-	public static void updateCurrentUser (HttpSessionBindingEvent arg0) {
-		HttpSession session = arg0.getSession();
-		ServletContext context = session.getServletContext();
-		String sessionId = session.getId();
-		ArrayList<CurrentUser> currentUserList = (ArrayList<CurrentUser>) context.getAttribute("currentUserList");
-		for (CurrentUser c:currentUserList) {
-			if (sessionId.equals(c.getSessionId())){
-				if (arg0.getName().equals("staff_id")) {
-					c.setStaffId((String) session.getAttribute(arg0.getName()));
-					c.setEffDate(new Date());
-				}
-				currentUserList.remove(c);
-				currentUserList.add(c);
-			}
-		}
-		context.setAttribute("currentUserList",currentUserList);
-		System.out.println("updateCurrentUserFinish");
-		//显示用户
-		ArrayList<CurrentUser> currentUserList1 = (ArrayList<CurrentUser>) context.getAttribute("currentUserList");
-		for (CurrentUser c:currentUserList1) {
-			System.out.println(c.getSessionId());
-			System.out.println(c.getIpAddress());
-			System.out.println(c.getStaffId());
-			System.out.println(c.getEffDate());
-		}
-	}
-	
 	public static void removeCurrentUser (HttpSessionEvent arg0) {
-		System.out.println("removeCurrentUser");
 		HttpSession session = arg0.getSession();
 		ServletContext context = session.getServletContext();
 		String sessionId = session.getId();
-		@SuppressWarnings("unchecked")
 		ArrayList<CurrentUser> currentUserList = (ArrayList<CurrentUser>) context.getAttribute("currentUserList");
 		for (CurrentUser c:currentUserList) {
 			if (sessionId.equals(c.getSessionId())){
@@ -70,40 +41,29 @@ public class CurrentUserDAO {
 		}
 		context.setAttribute("currentUserList", currentUserList);
 		context.setAttribute("currentUserNumber", currentUserList.size());
-		System.out.println("removeCurrentUserFinish");
-		//显示用户
-		@SuppressWarnings("unchecked")
-		ArrayList<CurrentUser> currentUserList1 = (ArrayList<CurrentUser>) context.getAttribute("currentUserList");
-		for (CurrentUser c:currentUserList1) {
-			System.out.println(c.getSessionId());
-			System.out.println(c.getIpAddress());
-			System.out.println(c.getStaffId());
-			System.out.println(c.getEffDate());
-		}
 	}
+	
+	@SuppressWarnings("unchecked")
 	public static ArrayList<CurrentUser> showCurrentUser(HttpServletRequest request) {
-		System.out.println("showCurrentUser");
-		@SuppressWarnings("unchecked")
 		ArrayList<CurrentUser> currentUserList = (ArrayList<CurrentUser>) request.getServletContext().getAttribute("currentUserList");
-		System.out.println("showCurrentUserFinish");
-		//显示用户
-		@SuppressWarnings("unchecked")
-		ArrayList<CurrentUser> currentUserList1 = (ArrayList<CurrentUser>) request.getServletContext().getAttribute("currentUserList");
-		for (CurrentUser c:currentUserList1) {
-			System.out.println(c.getSessionId());
-			System.out.println(c.getIpAddress());
-			System.out.println(c.getStaffId());
-			System.out.println(c.getEffDate());
-		}
 		return currentUserList;
 	}
 	
-	//用于RequestListener
-	public static boolean judgeCurrentUser (ServletContext context,String sessionId) {
-		@SuppressWarnings("unchecked")
+//	RequestListener,添加currentUser和sessionLog
+	@SuppressWarnings("unchecked")
+	public static boolean judgeCurrentUser (ServletContext context, String sessionId, String ipAddress, String staffId) {
 		ArrayList<CurrentUser> currentUserList = (ArrayList<CurrentUser>) context.getAttribute("currentUserList");
 		for (CurrentUser c:currentUserList) {
+			System.out.println(c.getStaffId());
 			if (sessionId.equals(c.getSessionId())){
+				if (!staffId.equals(c.getStaffId())){
+					currentUserList.remove(c);
+					c.setStaffId(staffId);
+					currentUserList.add(c);
+					context.setAttribute("currentUserList", currentUserList);
+					context.setAttribute("currentUserNumber", currentUserList.size());
+				}
+				
 				return true;
 			}
 		}

@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div>
     	main for user <br>
+    	<a href="<%=path%>/mainForAdmin.jsp">管理界面</a>
     </div>
   </body>
 </html>

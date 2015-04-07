@@ -22,6 +22,7 @@ DAFS实现功能：
 	员工管理系统（员工列表，员工详情）
 
 下一阶段计划：
+requestListener sessionDAO
 	将管理员模式移到用户下面
 	访问日志分为请求日志和会话日志，sessionLog改toString
 	sesssion_log(exp_date) 未更新

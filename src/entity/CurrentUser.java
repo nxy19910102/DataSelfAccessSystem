@@ -3,7 +3,6 @@ package entity;
 import java.util.Date;
 
 public class CurrentUser {
-	
 	private String sessionId;
 	private String ipAddress;
 	private String staffId;

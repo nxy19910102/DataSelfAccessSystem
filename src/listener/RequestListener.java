@@ -54,7 +54,8 @@ public class RequestListener implements ServletRequestListener {
 		String parameters = parameter.toString();
 		RequestLogDAO.addRequestLog(sessionId, ipAddress, serverPath, staffId, parameters);
 		
-		if (!CurrentUserDAO.judgeCurrentUser(context, sessionId)) {
+//		!!!!!SessionLogDAO需改进
+		if (!CurrentUserDAO.judgeCurrentUser(context, sessionId, ipAddress, staffId)) {
 			SessionLogDAO.addSessionLog(sessionId, ipAddress, staffId);
 			CurrentUserDAO.addCurrentUser(context, sessionId, ipAddress, staffId);
 		}
