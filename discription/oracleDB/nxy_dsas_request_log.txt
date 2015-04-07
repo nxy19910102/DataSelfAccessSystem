@@ -1,0 +1,14 @@
+--drop table NXY_DSAS_REQUEST_LOG;
+create table NXY_DSAS_REQUEST_LOG (
+  id                        number(10),
+  session_id                varchar2(200),
+  ip_address                varchar2(200),
+  server_path               varchar2(200),
+  staff_id                  varchar2(200),
+  parameters                varchar2(200),
+  eff_date                  date);
+drop sequence NXY_DSAS_REQUEST_LOG_ID;
+create sequence NXY_DSAS_REQUEST_LOG_ID increment by 1 start with 1 nomaxvalue nocycle;
+insert into NXY_DSAS_REQUEST_LOG (id,session_id,ip_address,server_path,staff_id,parameters,eff_date)
+  values (0,'init','init','init','niuxy3','none',sysdate);
+commit;

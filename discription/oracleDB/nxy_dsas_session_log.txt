@@ -1,0 +1,13 @@
+--drop table NXY_DSAS_SESSION_LOG;
+create table NXY_DSAS_SESSION_LOG (
+  id                        number(10),
+  session_id                varchar2(200),
+  ip_address                varchar2(200),
+  staff_id                  varchar2(200),
+  eff_date                  date,
+  exp_date                  date);
+drop sequence NXY_DSAS_SESSION_LOG_ID;
+create sequence NXY_DSAS_SESSION_LOG_ID increment by 1 start with 1 nomaxvalue nocycle;
+insert into NXY_DSAS_SESSION_LOG (id,session_id,ip_address,staff_id,eff_date,exp_date)
+  values (0,'init','init','init',sysdate,sysdate);
+commit;

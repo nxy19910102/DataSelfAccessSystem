@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="DataSelfAccessSystem" version="3.1">
+    <description>designed by NXY</description>
+  <display-name>DataSelfAccessSystem</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorPages/error404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorPages/error500.jsp</location>
+    </error-page>
+    <servlet id="LoginServlet">
+        <description>display main surface for web users or managers</description>
+        <display-name>LoginServlet</display-name>
+        <servlet-name>LoginServlet</servlet-name>
+        <servlet-class>servlet.LoginServlet</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LoginServlet</servlet-name>
+        <url-pattern>/servlet/LoginServlet</url-pattern>
+    </servlet-mapping>
+    <servlet id="ErrorServlet">
+        <description>do errors</description>
+        <display-name>ErrorServlet</display-name>
+        <servlet-name>ErrorServlet</servlet-name>
+        <servlet-class>servlet.ErrorServlet</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ErrorServlet</servlet-name>
+        <url-pattern>/servlet/ErrorServlet</url-pattern>
+    </servlet-mapping>
+    <filter id="LoginFilter">
+        <description>filt nologin</description>
+        <display-name>LoginFilter</display-name>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filter.LoginFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>filterException</param-name>
+            <param-value>index;LoginServlet;loginFailure;error404;error500;errorUploaded;ErrorServlet</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <filter id="ErrorFilter">
+        <description>filt error</description>
+        <display-name>ErrorFilter</display-name>
+        <filter-name>ErrorFilter</filter-name>
+        <filter-class>filter.ErrorFilter</filter-class>
+        <async-supported>true</async-supported>
+    </filter>
+    <filter-mapping>
+        <filter-name>ErrorFilter</filter-name>
+        <url-pattern>/errorPages/error404.jsp</url-pattern>
+        <url-pattern>/errorPages/error500.jsp</url-pattern>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
+    <filter id="CharacterFilter">
+        <description>filt wrong charset</description>
+        <display-name>CharacterFilter</display-name>
+        <filter-name>CharacterFilter</filter-name>
+        <filter-class>filter.CharacterFilter</filter-class>
+        <async-supported>true</async-supported>
+        <init-param>
+            <param-name>charset</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>ASYNC</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+    <servlet id="SuggestServlet">
+        <description>do suggest</description>
+        <display-name>SuggestServlet</display-name>
+        <servlet-name>SuggestServlet</servlet-name>
+        <servlet-class>servlet.SuggestServlet</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SuggestServlet</servlet-name>
+        <url-pattern>/servlet/SuggestServlet</url-pattern>
+    </servlet-mapping>
+</web-app>
