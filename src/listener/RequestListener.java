@@ -36,6 +36,7 @@ public class RequestListener implements ServletRequestListener {
 		String ipAddress = request.getRemoteAddr();
 		String serverPath = request.getServletPath();
 		String staffId;
+//		设置session属性staff_id
 		if (session.getAttribute("staff_id")!=null){
 			staffId = (String) session.getAttribute("staff_id");
 		} else {
@@ -52,9 +53,8 @@ public class RequestListener implements ServletRequestListener {
 			parameter.append(param+":"+request.getParameter(param)+";"); 
 		}
 		String parameters = parameter.toString();
-		RequestLogDAO.addRequestLog(sessionId, ipAddress, serverPath, staffId, parameters);
 		
-//		!!!!!SessionLogDAO需改进
+		RequestLogDAO.addRequestLog(sessionId, ipAddress, serverPath, staffId, parameters);
 		if (!CurrentUserDAO.judgeCurrentUser(context, sessionId, ipAddress, staffId)) {
 			SessionLogDAO.addSessionLog(sessionId, ipAddress, staffId);
 			CurrentUserDAO.addCurrentUser(context, sessionId, ipAddress, staffId);

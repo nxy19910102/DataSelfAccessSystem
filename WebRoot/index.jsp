@@ -12,14 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="styles/index.css" rel="stylesheet" type="text/css">
   </head>
 
-<%
-if (request.getSession().getAttribute("staff_id")!=null){
-	System.out.println(request.getSession().getAttribute("staff_id"));
-	System.out.println(request.getSession().getAttribute("is_admin"));
-}
- %>
   <body>
-<%System.out.println("jspStarted"); %>
     <div class="main">
 		<h1>Data Self-Access System</h1>
 	</div>
@@ -43,15 +36,6 @@ if (request.getSession().getAttribute("staff_id")!=null){
 	        		<td><input type="password" name="password" id="password" placeholder="请输入密码"></td>
 	        		<td>&nbsp;&nbsp;&nbsp;<a href="#">忘记密码</a></td>
 	        	</tr>
-	        	<tr>
-	        		<td><label>权限：</label></td>
-	        		<td><select name="is_admin">
-	        				<option value="normal" selected="selected">普通</option>
-	        				<option value="admin">管理员</option>
-	        			</select></td>
-	        		<td><input type="checkbox" name="remAdmin" id="remAdmin" value="remAdmin" checked="checked">
-	        			<label for="remAdmin">记住权限</label></td>
-	        	</tr>
 	        	<tr >
 	        		<td><input type="submit" value="登录"></td>
 	        		<td><input type="reset" value="重置"></td>
@@ -68,6 +52,5 @@ if (request.getSession().getAttribute("staff_id")!=null){
 		<h4><a href='#'>1</a><br><br>
 		<a href='#'>2</a></h4>
 	</div>
-<%System.out.println("jspFinished"); %>
   </body>
 </html>

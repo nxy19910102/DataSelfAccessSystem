@@ -1,0 +1,10 @@
+--drop table NXY_DSAS_AUTHORITY;
+create table NXY_DSAS_AUTHORITY (
+  id                        number(10),
+  staff_id                  varchar2(200),
+  administrator             number(1));
+drop sequence NXY_DSAS_AUTHORITY_ID;
+create sequence NXY_DSAS_AUTHORITY_ID increment by 1 start with 1 nomaxvalue nocycle;
+insert into NXY_DSAS_AUTHORITY (id,staff_id,administrator)
+  values (0,'niuxy3',1);
+commit;

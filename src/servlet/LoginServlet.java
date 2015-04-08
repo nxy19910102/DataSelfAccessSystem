@@ -32,17 +32,17 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String path = request.getContextPath();
-		String staff_id = "none";
-		String password = "none";
+		String staffId = null;
+		String password = null;
 		if (request.getParameter("staff_id")!=null){
-			staff_id = (String) request.getParameter("staff_id");
+			staffId = (String) request.getParameter("staff_id");
 		}
 		if (request.getParameter("password")!=null){
 			password = (String) request.getParameter("password");
 		}
-		if (this.judgeLogin(staff_id,password)){
+		if (this.judgeLogin(staffId,password)){
 			HttpSession session = request.getSession();
-			session.setAttribute("staff_id", staff_id);
+			session.setAttribute("staff_id", staffId);
 				request.getRequestDispatcher("../mainForUser.jsp").forward(request, response);
 		}else{
 			response.sendRedirect(path+"/loginFailure.jsp");

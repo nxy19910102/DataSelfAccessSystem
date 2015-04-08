@@ -29,6 +29,20 @@ public class SessionLogDAO {
 		}
 	}
 	
+//	SessionListener
+	public static void invalidateSessionLog(String sessionId) {
+		try {
+			Connection conn = DBConnect.getConnection();
+			String sql = "update nxy_dsas_session_log set exp_date = sysdate "
+				+ "where exp_date is null and session_id = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, sessionId);
+			ps.execute();
+			ps.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	public ArrayList<SessionLog> showSessionLog() throws SQLException{
 		ArrayList<SessionLog> sessionLogList = new ArrayList<SessionLog>();
 		SessionLog sessionLog = null;

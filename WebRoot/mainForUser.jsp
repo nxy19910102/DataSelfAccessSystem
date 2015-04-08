@@ -11,11 +11,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>Data Self-Access System</title>
 	<link rel="stylesheet" type="text/css" href="styles/index.css">
   </head>
-  
+
   <body>
   	<div>
-    	main for user <br>
-    	<a href="<%=path%>/mainForAdmin.jsp">管理界面</a>
+  		<p>你好，<%=request.getSession().getAttribute("staff_id") %></p>
+    	<a href="<%=path%>/servlet/AdministratorServlet">管理界面</a>
     </div>
   </body>
 </html>
