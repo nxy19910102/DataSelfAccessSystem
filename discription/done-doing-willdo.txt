@@ -1,28 +1,29 @@
-组件:数据表:nxy_dsas_error.txt,nxy_dsas_request_log.txt,nxy_dsas_session_log.txt,nxy_dsas_staff.txt
-	lib:ojdbc6.jar
+组件:数据表:nxy_dsas_authority, nxy_dsas_current_user, nxy_dsas_error.txt, nxy_dsas_request_log.txt, nxy_dsas_session_log.txt, nxy_dsas_staff.txt, nxy_dsas_suggestion.txt
+	lib:ojdbc6.jar(oracle11g R2)
 	util:DBconnect.java
-	entity:Error500.java,RequestLog.java,SessionLog.java,Staff.java,
-	DAO:ErrorDAO.java,RequestLogDAO.java,SessionLogDAO.java,StaffDAO.java,
-	servlet:ErrorServlet.java,LoginServlet.java,
-	filter:CharactorFilter.java,ErrorFilter.java,LoginFilter.java,
-	listener:ContextListener.java,RequestAttributeListener.java,RequestListener.java,SessionAttributeListener.java,SessionListener.java
-	前台:index.jsp,loginFailure.jsp,mainForAdmin.jsp,mainForUser.jsp,
-	访问日志:requestLog.jsp,sessionLog.jsp
-	错误处理:error404.jsp,error500.jsp,errorManege.jsp,errorUploaded.jsp
-	员工管理:staffManage.jsp,staffDetail.jsp
-	CSS:errorManege.css,index.css
-	img:
-	
+	DAO:AuthorityDAO.java, CurrentUserDAO.java, ErrorDAO.java, RequestLogDAO.java, SessionLogDAO.java, StaffDAO.java, SuggestDAO.java
+	entity:Authority,java, CurrentUser.java, Error500.java, RequestLog.java, SessionLog.java, Staff.java, Suggest.java
+	filter:CharactorFilter.java, ErrorFilter.java, LoginFilter.java
+	listener:ContextListener.java, RequestListener.java, SessionListener.java
+	servlet:AdministrotorServlet.java, ErrorServlet.java, LoginServlet.java, SuggestServlet.java
+	JSP:archive_odbc.jsp, index.jsp, loginFailure.jsp, mainForAdmin.jsp, mainForUser.jsp, qf_tz_odbc.jsp
+	错误处理:error404.jsp, error500.jsp, errorManege.jsp, errorUploaded.jsp
+	访问日志:requestLog.jsp, sessionLog.jsp
+	员工管理:curerntUser.jsp, staffDetail.jsp, staffManage.jsp,
+	CSS:errorManege.css, index.css
+
 DAFS实现功能：
-	登录界面区分普通权限和管理员权限
+	登录界面为普通用户，登陆后可选择管理员模式
 	数据库连接（Oracle，MySQL）
 	监听在线人数，操作流水日志
 	字符转换，非主页过滤，错误过滤
-	错误处理系统（错误提交，错误查看）
 	员工管理系统（员工列表，员工详情）
+	错误处理系统（错误提交，错误查看）
 
 下一阶段计划：
-	将管理员模式移到用户下面！
+	sessionLog exp 测试
+	将静态方法写为非静态
+	int换成long
 	访问日志分为请求日志和会话日志，sessionLog改toString
 	登陆验证放到服务器常量
 	分页显示数据
@@ -36,4 +37,3 @@ DAFS实现功能：
 	首页（忘记密码）
 	错误处理（未处理转已处理）
 	员工管理（添加工号，使失效）
-	

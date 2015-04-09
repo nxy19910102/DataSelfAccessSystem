@@ -34,15 +34,15 @@ public class LoginServlet extends HttpServlet {
 		String path = request.getContextPath();
 		String staffId = null;
 		String password = null;
-		if (request.getParameter("staff_id")!=null){
-			staffId = (String) request.getParameter("staff_id");
+		if (request.getParameter("staffId")!=null){
+			staffId = (String) request.getParameter("staffId");
 		}
 		if (request.getParameter("password")!=null){
 			password = (String) request.getParameter("password");
 		}
 		if (this.judgeLogin(staffId,password)){
 			HttpSession session = request.getSession();
-			session.setAttribute("staff_id", staffId);
+			session.setAttribute("staffId", staffId);
 				request.getRequestDispatcher("../mainForUser.jsp").forward(request, response);
 		}else{
 			response.sendRedirect(path+"/loginFailure.jsp");

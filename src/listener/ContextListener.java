@@ -3,10 +3,13 @@ package listener;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import dao.AuthorityDAO;
+import entity.Authority;
 import entity.CurrentUser;
 import util.DBConnect;
 
@@ -24,14 +27,23 @@ public class ContextListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent arg0) {
+		ServletContext context = arg0.getServletContext();
 		try {
 			DBConnect.getConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		
+		AuthorityDAO authorityDAO = new AuthorityDAO();
+		try {
+			ArrayList<Authority> authorityList = authorityDAO.getAuthority();
+			context.setAttribute("authorityList", authorityList);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		ArrayList<CurrentUser> currentUserList = new ArrayList<CurrentUser>();
-		arg0.getServletContext().setAttribute("currentUserList", currentUserList);
-		arg0.getServletContext().setAttribute("currentUserNumber", currentUserList.size());
+		context.setAttribute("currentUserList", currentUserList);
+		context.setAttribute("currentUserNumber", currentUserList.size());
 	}
 }

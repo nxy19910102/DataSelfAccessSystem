@@ -40,6 +40,7 @@ public class ErrorDAO {
 		Error500 error = null;
 		Connection conn = DBConnect.getConnection();
 		String sql = "select * from nxy_dsas_error order by id desc";
+		System.out.println(sql);
 		Statement st = conn.createStatement();
 		ResultSet rs = st.executeQuery(sql);
 		while (rs.next()){

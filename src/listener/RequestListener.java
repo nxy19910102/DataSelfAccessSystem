@@ -36,17 +36,19 @@ public class RequestListener implements ServletRequestListener {
 		String ipAddress = request.getRemoteAddr();
 		String serverPath = request.getServletPath();
 		String staffId;
-//		设置session属性staff_id
-		if (session.getAttribute("staff_id")!=null){
-			staffId = (String) session.getAttribute("staff_id");
+//		设置session属性staffId
+		if (session.getAttribute("staffId")!=null){
+			staffId = (String) session.getAttribute("staffId");
 		} else {
 			staffId = "nologin";
 		}
 		Enumeration<String> enumer =request.getParameterNames();
+		
 		StringBuffer parameter = new StringBuffer();
 		String param;
 		while (enumer.hasMoreElements()){
 			param = enumer.nextElement();
+			System.out.println(param);
 			if (param.equals("password")){
 				continue;
 			}
