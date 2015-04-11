@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>Data Self-Access System</title>
-    <style></style>
   </head>
   <body>
     <h1 align="center">员工查询</h1>
@@ -30,10 +29,10 @@ if (staffList!=null&&staffList.size()>0){
 		Staff staff = staffList.get(i);
  %>
     	<tr>
-    		<td height="30px" align="center"><%=staff.getStaff_id() %></td>
-    		<td height="30px" align="center"><%=staff.getStaff_name() %></td>
+    		<td height="30px" align="center"><%=staff.getStaffId() %></td>
+    		<td height="30px" align="center"><%=staff.getStaffName() %></td>
     		<td height="30px" align="center"><%=staff.getDepartment() %></td>
-    		<td height="30px" align="center"><a href="staff/staffDetail.jsp?staff_id=<%=staff.getStaff_id() %>">查看详情</a></td>
+    		<td height="30px" align="center"><a href="staff/staffDetail.jsp?staffId=<%=staff.getStaffId() %>">查看详情</a></td>
     	</tr>
 <%
 	}

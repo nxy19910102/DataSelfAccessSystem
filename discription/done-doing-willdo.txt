@@ -1,16 +1,18 @@
-组件:数据表:nxy_dsas_authority, nxy_dsas_current_user, nxy_dsas_error.txt, nxy_dsas_request_log.txt, nxy_dsas_session_log.txt, nxy_dsas_staff.txt, nxy_dsas_suggestion.txt
-	lib:ojdbc6.jar(oracle11g R2)
-	util:DBconnect.java
-	DAO:AuthorityDAO.java, CurrentUserDAO.java, ErrorDAO.java, RequestLogDAO.java, SessionLogDAO.java, StaffDAO.java, SuggestDAO.java
-	entity:Authority,java, CurrentUser.java, Error500.java, RequestLog.java, SessionLog.java, Staff.java, Suggest.java
-	filter:CharactorFilter.java, ErrorFilter.java, LoginFilter.java
-	listener:ContextListener.java, RequestListener.java, SessionListener.java
-	servlet:AdministrotorServlet.java, ErrorServlet.java, LoginServlet.java, SuggestServlet.java
-	JSP:archive_odbc.jsp, index.jsp, loginFailure.jsp, mainForAdmin.jsp, mainForUser.jsp, qf_tz_odbc.jsp
-	错误处理:error404.jsp, error500.jsp, errorManege.jsp, errorUploaded.jsp
-	访问日志:requestLog.jsp, sessionLog.jsp
-	员工管理:curerntUser.jsp, staffDetail.jsp, staffManage.jsp,
-	CSS:errorManege.css, index.css
+组件:数据表: nxy_dsas_authority, nxy_dsas_current_user, nxy_dsas_error.txt, nxy_dsas_request_log.txt, nxy_dsas_session_log.txt, nxy_dsas_staff.txt, nxy_dsas_suggestion.txt
+	lib: ojdbc6.jar(oracle11g R2)
+	util: DBconnect.java
+	DAO: AuthorityDAO.java, CurrentUserDAO.java, ErrorDAO.java, RequestLogDAO.java, SessionLogDAO.java, StaffDAO.java, SuggestDAO.java
+	entity: Authority,java, CurrentUser.java, Error500.java, RequestLog.java, SessionLog.java, Staff.java, Suggest.java
+	filter: CharactorFilter.java, ErrorFilter.java, LoginFilter.java
+	listener: ContextListener.java, RequestListener.java, SessionListener.java
+	servlet: AdministrotorServlet.java, ErrorServlet.java, LoginServlet.java, SuggestServlet.java
+	CSS: errorManege.css, index.css
+	mainJSP: archive_odbc.jsp, index.jsp, loginFailure.jsp, mainForAdmin.jsp, mainForUser.jsp, qf_tz_odbc.jsp
+	contextAttribute: authorityList, currentUserList, currentUserNumber
+	sessionAttribute: staffId
+	errorManagement: error404.jsp, error500.jsp, errorManege.jsp, errorUploaded.jsp
+	logs: requestLog.jsp, sessionLog.jsp
+	staffManagement: curerntUser.jsp, staffDetail.jsp, staffManage.jsp,
 
 DAFS实现功能：
 	登录界面为普通用户，登陆后可选择管理员模式
@@ -21,16 +23,16 @@ DAFS实现功能：
 	错误处理系统（错误提交，错误查看）
 
 下一阶段计划：
-	sessionLog exp 测试
+状态为0 staffDetail
 	将静态方法写为非静态
-	int换成long
 	访问日志分为请求日志和会话日志，sessionLog改toString
-	登陆验证放到服务器常量
 	分页显示数据
 	数据下载（文本，excel）
 	数据上传（文本，excel）
 
 待开发功能：
+	sessionLog exp 测试,sessionListener无效,sessionLog DateToString
+	staff 失效日期处理
 	cookie
 	登录界面前台
 	站内通信

@@ -5,22 +5,22 @@ create table NXY_DSAS_STAFF (
   password varchar2(200),
   staff_name  varchar2(200),
   department  varchar2(200),
-  state  varchar2(200),
+  state  number(1),
   update_user varchar2(200),
   update_date  date,
   eff_date     date,
   exp_date     date,
-  is_admin  varchar2(200),
   password_tip varchar2(200));
 drop sequence nxy_DSAS_staff_id;
 create sequence nxy_DSAS_staff_id increment by 1 start with 1 nomaxvalue nocycle;
-insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,is_admin,password_tip)
-  values (0,'niuxy3','niuxy3','牛晓宇','业务支撑中心','正常','init',sysdate,sysdate,sysdate+100,'管理员','管理员');
+insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,password_tip)
+  values (0,'niuxy3','niuxy3','牛晓宇','业务支撑中心',0,'init',sysdate,sysdate,sysdate+100,'管理员');
 commit;
-insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,is_admin,password_tip)
-  values (nxy_DSAS_staff_id.nextVal,'test1','pwd1','test1','部门1','注销','init',sysdate,sysdate,sysdate+100,'管理员','管理员');
-insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,is_admin,password_tip)
-  values (nxy_DSAS_staff_id.nextVal,'test1','pwd1','test1','部门1','正常','init',sysdate,sysdate,sysdate+100,'管理员','管理员');
-insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,is_admin,password_tip)
-  values (nxy_DSAS_staff_id.nextVal,'test2','pwd2','test2','部门2','正常','init',sysdate,sysdate,sysdate+100,'普通','普通');
+insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,password_tip)
+  values (nxy_DSAS_staff_id.nextVal,'test1','pwd1','test1','部门1',2,'init',sysdate,sysdate,sysdate+100,'test1');
+insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,password_tip)
+  values (nxy_DSAS_staff_id.nextVal,'test1','pwd1','test1','部门1',0,'init',sysdate,sysdate,sysdate+100,'test1');
+insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,update_user,update_date,eff_date,exp_date,password_tip)
+  values (nxy_DSAS_staff_id.nextVal,'test2','pwd2','test2','部门2',0,'init',sysdate,sysdate,sysdate+100,'test2');
 commit;
+--decode(state,0,'正常',1,'冷冻',2,'注销')

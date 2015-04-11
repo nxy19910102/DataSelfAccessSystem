@@ -27,6 +27,7 @@ public class UploadServlet extends HttpServlet {
 		//从request获得流信息
 		InputStream fileSource = request.getInputStream();
 		String tempFileName = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/tempFile";
+//		String tempFileName = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/tempFile";
 		//tempFile指向临时文件
 		File tempFile = new File(tempFileName);
 		//outputStream输出流指向临时文件

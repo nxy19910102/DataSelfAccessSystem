@@ -40,22 +40,17 @@ public class LoginServlet extends HttpServlet {
 		if (request.getParameter("password")!=null){
 			password = (String) request.getParameter("password");
 		}
-		if (this.judgeLogin(staffId,password)){
-			HttpSession session = request.getSession();
-			session.setAttribute("staffId", staffId);
-				request.getRequestDispatcher("../mainForUser.jsp").forward(request, response);
-		}else{
-			response.sendRedirect(path+"/loginFailure.jsp");
-		}
-	}
-
-	public boolean judgeLogin(String staff_id, String password){
 		try {
-			return staffDAO.judgeLogin(staff_id, password);
+			if (staffDAO.judgeLogin(staffId,password)){
+				HttpSession session = request.getSession();
+				session.setAttribute("staffId", staffId);
+					request.getRequestDispatcher("../mainForUser.jsp").forward(request, response);
+			}else{
+				response.sendRedirect(path+"/loginFailure.jsp");
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return false; 
 	}
 	
 	public void init() throws ServletException {

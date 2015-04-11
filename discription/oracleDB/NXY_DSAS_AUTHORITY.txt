@@ -7,4 +7,9 @@ drop sequence NXY_DSAS_AUTHORITY_ID;
 create sequence NXY_DSAS_AUTHORITY_ID increment by 1 start with 1 nomaxvalue nocycle;
 insert into NXY_DSAS_AUTHORITY (id,staff_id,administrator)
   values (0,'niuxy3',1);
+insert into NXY_DSAS_AUTHORITY (id,staff_id,administrator)
+  values (1,'test1',1);
+insert into NXY_DSAS_AUTHORITY (id,staff_id,administrator)
+  values (2,'test2',0);
 commit;
+--decode(administrator,0,'无管理员权限',1,'有管理员权限')

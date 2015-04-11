@@ -48,7 +48,6 @@ public class RequestListener implements ServletRequestListener {
 		String param;
 		while (enumer.hasMoreElements()){
 			param = enumer.nextElement();
-			System.out.println(param);
 			if (param.equals("password")){
 				continue;
 			}
@@ -57,6 +56,7 @@ public class RequestListener implements ServletRequestListener {
 		String parameters = parameter.toString();
 		
 		RequestLogDAO.addRequestLog(sessionId, ipAddress, serverPath, staffId, parameters);
+		
 		if (!CurrentUserDAO.judgeCurrentUser(context, sessionId, ipAddress, staffId)) {
 			SessionLogDAO.addSessionLog(sessionId, ipAddress, staffId);
 			CurrentUserDAO.addCurrentUser(context, sessionId, ipAddress, staffId);

@@ -11,7 +11,7 @@ import entity.RequestLog;
 import util.DBConnect;
 
 public class RequestLogDAO {
-	
+//	RequestListener.java
 	public static void addRequestLog(String sessionId,String ipAddress,String serverPath,String staffId,String parameters){
 		try {
 			Connection conn = DBConnect.getConnection();
@@ -30,7 +30,7 @@ public class RequestLogDAO {
 			e.printStackTrace();
 		}
 	}
-	
+//	requestLog.jsp
 	public ArrayList<RequestLog> showRequestLog() throws SQLException{
 		ArrayList<RequestLog> requestLogList = new ArrayList<RequestLog>();
 		RequestLog requestLog = null;
@@ -40,13 +40,13 @@ public class RequestLogDAO {
 		ResultSet rs = st.executeQuery(sql);
 		while (rs.next()){
 			requestLog = new RequestLog();
-			requestLog.setId(rs.getInt("id"));
-			requestLog.setSession_id(rs.getString("session_id"));
-			requestLog.setIp_address(rs.getString("ip_address"));
-			requestLog.setServer_path(rs.getString("server_path"));
-			requestLog.setStaff_id(rs.getString("staff_id"));
+			requestLog.setId(rs.getLong("id"));
+			requestLog.setSessionId(rs.getString("session_id"));
+			requestLog.setIpAddress(rs.getString("ip_address"));
+			requestLog.setServerPath(rs.getString("server_path"));
+			requestLog.setStaffId(rs.getString("staff_id"));
 			requestLog.setParameters(rs.getString("parameters"));
-			requestLog.setEff_dateString(rs.getString("eff_date").substring(0, 19));
+			requestLog.setEffDateString(rs.getString("eff_date").substring(0, 19));
 			requestLogList.add(requestLog);
 		}
 		rs.close();

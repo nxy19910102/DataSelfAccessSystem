@@ -11,7 +11,7 @@ import entity.SessionLog;
 import util.DBConnect;
 
 public class SessionLogDAO {
-	
+//	RequestListener.java
 	public static void addSessionLog(String sessionId,String ipAddress,String staffId) {
 		try {
 			Connection conn = DBConnect.getConnection();
@@ -40,9 +40,11 @@ public class SessionLogDAO {
 			ps.execute();
 			ps.close();
 		} catch (SQLException e) {
-			e.printStackTrace();
+			e.printStackTrace();	
 		}
 	}
+	
+//	sessionLog.jsp
 	public ArrayList<SessionLog> showSessionLog() throws SQLException{
 		ArrayList<SessionLog> sessionLogList = new ArrayList<SessionLog>();
 		SessionLog sessionLog = null;
@@ -52,12 +54,12 @@ public class SessionLogDAO {
 		ResultSet rs = st.executeQuery(sql);
 		while (rs.next()){
 			sessionLog = new SessionLog();
-			sessionLog.setId(rs.getInt("id"));
-			sessionLog.setSession_id(rs.getString("session_id"));
-			sessionLog.setIp_address(rs.getString("ip_address"));
-			sessionLog.setStaff_id(rs.getString("staff_id"));
-			sessionLog.setEff_date(rs.getDate("eff_date"));
-			sessionLog.setExp_date(rs.getDate("exp_date"));
+			sessionLog.setId(rs.getLong("id"));
+			sessionLog.setSessionId(rs.getString("session_id"));
+			sessionLog.setIpAddress(rs.getString("ip_address"));
+			sessionLog.setStaffId(rs.getString("staff_id"));
+			sessionLog.setEffDate(rs.getDate("eff_date"));
+			sessionLog.setExpDate(rs.getDate("exp_date"));
 			sessionLogList.add(sessionLog);
 		}
 		rs.close();

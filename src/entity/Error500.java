@@ -3,28 +3,28 @@ package entity;
 import java.util.Date;
 
 public class Error500 {
-	private int id;
-	private String staff_id;
+	private Long id;
+	private String staffId;
 	private String url;
-	private String server_path;
+	private String serverPath;
 	private String detail;
-	private String state;
-	private Date eff_date;
-	private Date exp_date;
-	private String eff_dateString;
-	private String exp_dateString;
+	private int state;
+	private Date effDate;
+	private Date expDate;
+	private String effDateString;
+	private String expDateString;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getStaff_id() {
-		return staff_id;
+	public String getStaffId() {
+		return staffId;
 	}
-	public void setStaff_id(String staff_id) {
-		this.staff_id = staff_id;
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
 	public String getUrl() {
 		return url;
@@ -32,11 +32,11 @@ public class Error500 {
 	public void setUrl(String url) {
 		this.url = url;
 	}
-	public String getServer_path() {
-		return server_path;
+	public String getServerPath() {
+		return serverPath;
 	}
-	public void setServer_path(String server_path) {
-		this.server_path = server_path;
+	public void setServerPath(String serverPath) {
+		this.serverPath = serverPath;
 	}
 	public String getDetail() {
 		return detail;
@@ -44,34 +44,34 @@ public class Error500 {
 	public void setDetail(String detail) {
 		this.detail = detail;
 	}
-	public String getState() {
+	public int getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
-	public Date getEff_date() {
-		return eff_date;
+	public Date getEffDate() {
+		return effDate;
 	}
-	public void setEff_date(Date eff_date) {
-		this.eff_date = eff_date;
+	public void setEffDate(Date effDate) {
+		this.effDate = effDate;
 	}
-	public Date getExp_date() {
-		return exp_date;
+	public Date getExpDate() {
+		return expDate;
 	}
-	public void setExp_date(Date exp_date) {
-		this.exp_date = exp_date;
+	public void setExpDate(Date expDate) {
+		this.expDate = expDate;
 	}
-	public String getEff_dateString() {
-		return eff_dateString;
+	public String getEffDateString() {
+		return effDateString;
 	}
-	public void setEff_dateString(String eff_dateString) {
-		this.eff_dateString = eff_dateString;
+	public void setEffDateString(String effDateString) {
+		this.effDateString = effDateString;
 	}
-	public String getExp_dateString() {
-		return exp_dateString;
+	public String getExpDateString() {
+		return expDateString;
 	}
-	public void setExp_dateString(String exp_dateString) {
-		this.exp_dateString = exp_dateString;
+	public void setExpDateString(String expDateString) {
+		this.expDateString = expDateString;
 	}
 }

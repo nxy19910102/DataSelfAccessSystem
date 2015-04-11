@@ -42,7 +42,7 @@ public class LoginFilter implements Filter {
 					return;
 				}
 			}
-			//会话属性有staff_id则不过滤
+			//会话属性有staffId则不过滤
 			if (session.getAttribute("staffId")!=null){
 				arg2.doFilter(arg0, arg1);
 				return;

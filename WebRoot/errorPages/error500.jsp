@@ -3,6 +3,18 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+String staffId = "none";
+String detail = "none";
+String url = request.getRequestURL().toString();
+String serverPath = request.getServletPath();
+if (session.getAttribute("staffId")!=null){
+	staffId = (String) session.getAttribute("staffId");
+}
+if (request.getParameter("detail")!=""){
+	detail = request.getParameter("detail");
+}
+ErrorDAO errorDAO =new ErrorDAO();
+errorDAO.addError(staffId, url, serverPath, detail);
  %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -12,19 +24,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>Data Self-Access System</title>
 	<link href="styles/index.css" rel="stylesheet" type="text/css">
   </head>
-<%
-String staff_id = "none";
-String detail = "none";
-String url = request.getRequestURL().toString();
-String serverPath = request.getServletPath();
-if (session.getAttribute("staff_id")!=null){
-	staff_id = (String) session.getAttribute("staff_id");
-}
-if (request.getParameter("detail")!=""){
-	detail = request.getParameter("detail");
-}
-ErrorDAO.addError(staff_id,url,serverPath,detail);
- %>
   <body>
   	<div class="main">
     	<h1>系统出错啦！</h1>

@@ -13,17 +13,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link href="styles/index.css" rel="stylesheet" type="text/css">
   </head>
 <%
-String staff_id = "none";
+String staffId = "none";
 String detail = "none";
 String url = request.getRequestURL().toString();
 String serverPath = request.getServletPath();
-if (session.getAttribute("staff_id")!=null){
-	staff_id = (String) session.getAttribute("staff_id");
+if (session.getAttribute("staffId")!=null){
+	staffId = (String) session.getAttribute("staffId");
 }
 if (request.getParameter("detail")!=""){
 	detail = request.getParameter("detail");
 }
-SuggestDAO.addSuggest(staff_id,url,serverPath,detail);
+SuggestDAO suggestDAO = new SuggestDAO();
+suggestDAO.addSuggest(staffId, url, serverPath, detail);
  %>
   <body>
   	<div class="main">

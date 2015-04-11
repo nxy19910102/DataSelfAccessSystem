@@ -13,6 +13,7 @@ import entity.Authority;
 import util.DBConnect;
 
 public class AuthorityDAO {
+//	ContextListener.java
 	public ArrayList<Authority> getAuthority () throws SQLException{
 		ArrayList<Authority> authorityList = new ArrayList<Authority>();
 		Authority authority = null;
@@ -32,8 +33,9 @@ public class AuthorityDAO {
 		return authorityList;
 	}
 	
+//	mainForUser.jsp
 	@SuppressWarnings("unchecked")
-	public static boolean checkAdministrator (HttpServletRequest request, String staffId) {
+	public boolean checkAdministrator (HttpServletRequest request, String staffId) {
 		ServletContext context = request.getSession().getServletContext();
 		ArrayList<Authority> authorityList = (ArrayList<Authority>) context.getAttribute("authorityList");
 		for (Authority authority : authorityList){

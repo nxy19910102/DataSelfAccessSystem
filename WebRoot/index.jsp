@@ -28,8 +28,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<tr>
 	    			<td><label for="staffId">用户名：</label></td>
 	        		<td><input type="text" name="staffId" id="staffId" placeholder="请输入用户名"></td>
-	        		<td><input type="checkbox" name="rem" id="rem" value="rem" checked="checked">
-	        			<label for="rem">记住用户名</label></td>
+	        		<td><input type="checkbox" name="remStaffId" id="remStaffId" value="remStaffId" checked="checked">
+	        			<label for="remStaffId">记住用户名</label></td>
 	        	</tr>
 	        	<tr>
 	        		<td><label for="password">密码：</label></td>

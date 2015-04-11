@@ -11,9 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     <title>Data Self-Access System</title>
-    <%-- 
-    <link href="<%=path%>/styles/errorManage.css" rel="stylesheet" type="text/css">
-  --%>
   </head>
   <body>
   	<div align="center">
@@ -37,11 +34,11 @@ if (requestLogList!=null&&requestLogList.size()>0){
  %>
 	    	<tr>
 	    		<td height="60px" width="80px" align="center"><%=requestLog.getId() %></td>
-	    		<td height="60px" width="280px" align="center"><%=requestLog.getSession_id() %></td>
-	    		<td height="60px" width="180px" align="center"><%=requestLog.getIp_address() %></td>
-	    		<td height="60px" width="500px" align="center"><%=requestLog.getServer_path() %></td>
-	    		<td height="60px" width="200px" align="center"><%=requestLog.getStaff_id() %></td>
-	    		<td height="60px" width="130px" align="center"><%=requestLog.getEff_dateString() %></td>
+	    		<td height="60px" width="280px" align="center"><%=requestLog.getSessionId() %></td>
+	    		<td height="60px" width="180px" align="center"><%=requestLog.getIpAddress() %></td>
+	    		<td height="60px" width="500px" align="center"><%=requestLog.getServerPath() %></td>
+	    		<td height="60px" width="200px" align="center"><%=requestLog.getStaffId() %></td>
+	    		<td height="60px" width="130px" align="center"><%=requestLog.getEffDateString() %></td>
 	    		<td height="60px" align="center"><%=requestLog.getParameters() %></td>
 	    	</tr>
 <%

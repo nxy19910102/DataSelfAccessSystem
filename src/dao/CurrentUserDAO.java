@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import entity.CurrentUser;
 
 public class CurrentUserDAO {
+//	RequestListener.java
 	@SuppressWarnings("unchecked")
 	public static void addCurrentUser (ServletContext context,String sessionId,String ipAddress,String staffId){
 		CurrentUser currentUser = new CurrentUser();
@@ -40,13 +41,14 @@ public class CurrentUserDAO {
 		context.setAttribute("currentUserNumber", currentUserList.size());
 	}
 	
+//	CurrentUser.jsp
 	@SuppressWarnings("unchecked")
-	public static ArrayList<CurrentUser> showCurrentUser(HttpServletRequest request) {
+	public ArrayList<CurrentUser> showCurrentUser(HttpServletRequest request) {
 		ArrayList<CurrentUser> currentUserList = (ArrayList<CurrentUser>) request.getServletContext().getAttribute("currentUserList");
 		return currentUserList;
 	}
 	
-//	RequestListener,添加currentUser和sessionLog
+//	RequestListener.java,添加currentUser和sessionLog
 	@SuppressWarnings("unchecked")
 	public static boolean judgeCurrentUser (ServletContext context, String sessionId, String ipAddress, String staffId) {
 		ArrayList<CurrentUser> currentUserList = (ArrayList<CurrentUser>) context.getAttribute("currentUserList");

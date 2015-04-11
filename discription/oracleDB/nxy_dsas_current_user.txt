@@ -1,4 +1,4 @@
---drop table NXY_DSAS_CURRENT_USER;
+/*drop table NXY_DSAS_CURRENT_USER;
 create table NXY_DSAS_CURRENT_USER (
   id                        number(10),
   session_id                varchar2(200),
@@ -9,4 +9,4 @@ drop sequence NXY_DSAS_CURRENT_USER_ID;
 create sequence NXY_DSAS_CURRENT_USER_ID increment by 1 start with 1 nomaxvalue nocycle;
 insert into NXY_DSAS_REQUEST_LOG (id,session_id,ip_address,staff_id,eff_date)
   values (0,'init','init','init',sysdate);
-commit;
+commit;*/

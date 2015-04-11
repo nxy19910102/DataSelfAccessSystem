@@ -4,47 +4,47 @@ import java.util.Date;
 
 public class SessionLog {
 	
-	private int id;
-	private String session_id;
-	private String ip_address;
-	private String staff_id;
-	private Date eff_date;
-	private Date exp_date;
+	private Long id;
+	private String sessionId;
+	private String ipAddress;
+	private String staffId;
+	private Date effDate;
+	private Date expDate;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getSession_id() {
-		return session_id;
+	public String getSessionId() {
+		return sessionId;
 	}
-	public void setSession_id(String session_id) {
-		this.session_id = session_id;
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
-	public String getIp_address() {
-		return ip_address;
+	public String getIpAddress() {
+		return ipAddress;
 	}
-	public void setIp_address(String ip_address) {
-		this.ip_address = ip_address;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
-	public String getStaff_id() {
-		return staff_id;
+	public String getStaffId() {
+		return staffId;
 	}
-	public void setStaff_id(String staff_id) {
-		this.staff_id = staff_id;
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
-	public Date getEff_date() {
-		return eff_date;
+	public Date getEffDate() {
+		return effDate;
 	}
-	public void setEff_date(Date eff_date) {
-		this.eff_date = eff_date;
+	public void setEffDate(Date effDate) {
+		this.effDate = effDate;
 	}
-	public Date getExp_date() {
-		return exp_date;
+	public Date getExpDate() {
+		return expDate;
 	}
-	public void setExp_date(Date exp_date) {
-		this.exp_date = exp_date;
+	public void setExpDate(Date expDate) {
+		this.expDate = expDate;
 	}
 }

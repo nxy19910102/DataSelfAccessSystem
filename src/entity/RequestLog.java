@@ -4,44 +4,44 @@ import java.util.Date;
 
 public class RequestLog {
 	
-	private int id;
-	private String session_id;
-	private String ip_address;
-	private String server_path;
-	private String staff_id;
+	private Long id;
+	private String sessionId;
+	private String ipAddress;
+	private String serverPath;
+	private String staffId;
 	private String parameters;
-	private Date eff_date;
-	private String eff_dateString;
-
-	public int getId() {
+	private Date effDate;
+	private String effDateString;
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getSession_id() {
-		return session_id;
+	public String getSessionId() {
+		return sessionId;
 	}
-	public void setSession_id(String session_id) {
-		this.session_id = session_id;
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
-	public String getIp_address() {
-		return ip_address;
+	public String getIpAddress() {
+		return ipAddress;
 	}
-	public void setIp_address(String ip_address) {
-		this.ip_address = ip_address;
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
 	}
-	public String getServer_path() {
-		return server_path;
+	public String getServerPath() {
+		return serverPath;
 	}
-	public void setServer_path(String server_path) {
-		this.server_path = server_path;
+	public void setServerPath(String serverPath) {
+		this.serverPath = serverPath;
 	}
-	public String getStaff_id() {
-		return staff_id;
+	public String getStaffId() {
+		return staffId;
 	}
-	public void setStaff_id(String staff_id) {
-		this.staff_id = staff_id;
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
 	public String getParameters() {
 		return parameters;
@@ -49,16 +49,16 @@ public class RequestLog {
 	public void setParameters(String parameters) {
 		this.parameters = parameters;
 	}
-	public Date getEff_date() {
-		return eff_date;
+	public Date getEffDate() {
+		return effDate;
 	}
-	public void setEff_date(Date eff_date) {
-		this.eff_date = eff_date;
+	public void setEffDate(Date effDate) {
+		this.effDate = effDate;
 	}
-	public String getEff_dateString() {
-		return eff_dateString;
+	public String getEffDateString() {
+		return effDateString;
 	}
-	public void setEff_dateString(String eff_dateString) {
-		this.eff_dateString = eff_dateString;
+	public void setEffDateString(String effDateString) {
+		this.effDateString = effDateString;
 	}
 }

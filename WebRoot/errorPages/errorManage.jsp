@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<th height="30px">状态</th>
 	    		<th height="30px">出现时间</th>
 	    		<th height="30px">解决时间</th>
+	    		<th height="30px">查看详情</th>
 	    	</tr>
 <%
 ErrorDAO errorDAO = new ErrorDAO();
@@ -35,12 +36,13 @@ if (errorList!=null&&errorList.size()>0){
  %>
 	    	<tr>
 	    		<td height="30px" align="center"><%=error.getId() %></td>
-	    		<td height="30px" align="center"><%=error.getStaff_id() %></td>
+	    		<td height="30px" align="center"><%=error.getStaffId() %></td>
 	    		<td height="30px" align="center"><%=error.getUrl() %></td>
 	    		<td height="30px" align="center"><%=error.getDetail() %></td>
-	    		<td height="30px" align="center"><a href="#"><%=error.getState() %></a></td>
-	    		<td height="30px" align="center"><%=error.getEff_dateString() %></td>
-	    		<td height="30px" align="center"><%=error.getExp_dateString() %></td>
+	    		<td height="30px" align="center"><%=error.getState() %></td>
+	    		<td height="30px" align="center"><%=error.getEffDateString() %></td>
+	    		<td height="30px" align="center"><%=error.getExpDateString() %></td>
+	    		<td><a href='#'>查看详情</a></td>
 	    	</tr>
 <%
 	}

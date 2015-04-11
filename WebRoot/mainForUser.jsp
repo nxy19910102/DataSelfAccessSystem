@@ -4,8 +4,10 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 String staffId = (String) request.getSession().getAttribute("staffId");
+//判断用户是否有管理员权限
 String checkAdministrator = null;
-if (AuthorityDAO.checkAdministrator(request,staffId)){
+AuthorityDAO authorityDAO = new AuthorityDAO();
+if (authorityDAO.checkAdministrator(request,staffId)){
 	checkAdministrator = "normal";
 } else {
 	checkAdministrator = "hide";

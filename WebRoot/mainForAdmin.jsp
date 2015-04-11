@@ -16,9 +16,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		<h3>当前在线人数：<%=request.getSession().getServletContext().getAttribute("currentUserNumber")%></h3>
     	<a href="staff/staffManage.jsp">员工管理</a><br>
     	<a href="errorPages/errorManage.jsp">错误管理</a><br>
+    	<a href="suggestions/suggestionManage.jsp">建议管理</a><br>
     	<a href="logs/requestLog.jsp">访问日志</a><br>
     	<a href="staff/currentUser.jsp">当前用户</a><br>
-    	<a href="errorPages/error500.jsp">error500</a>
+    	<a href="errorPages/error500.jsp">error500测试</a>
 	</div>
   </body>
 </html>

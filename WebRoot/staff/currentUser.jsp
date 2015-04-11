@@ -6,7 +6,7 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-%>
+ %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -25,7 +25,8 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     		<th height="30px">登入时间</th>
     	</tr>
 <%
-ArrayList<CurrentUser> currentUserList = CurrentUserDAO.showCurrentUser(request);
+CurrentUserDAO currentUserDAO = new CurrentUserDAO();
+ArrayList<CurrentUser> currentUserList = currentUserDAO.showCurrentUser(request);
 if (currentUserList!=null&&currentUserList.size()>0){
 	for (int i=0;i<currentUserList.size();i++){
 		CurrentUser currentUser = currentUserList.get(i);

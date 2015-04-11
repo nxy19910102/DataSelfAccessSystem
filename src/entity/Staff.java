@@ -3,30 +3,32 @@ package entity;
 import java.util.Date;
 
 public class Staff {
-	private int id;
-	private String staff_id;
+	private Long id;
+	private String staffId;
 	private String password;
-	private String staff_name;
+	private String staffName;
 	private String department;
-	private String state;
-	private String update_user;
-	private Date update_date;
-	private Date eff_date;
-	private Date exp_date;
-	private String is_admin;
-	private String password_tip;
+	private int state;
+	private String updateUser;
+	private Date updateDate;
+	private String updateDateString;
+	private Date effDate;
+	private String effDateString;
+	private Date expDate;
+	private String expDateString;
+	private String passwordTip;
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getStaff_id() {
-		return staff_id;
+	public String getStaffId() {
+		return staffId;
 	}
-	public void setStaff_id(String staff_id) {
-		this.staff_id = staff_id;
+	public void setStaffId(String staffId) {
+		this.staffId = staffId;
 	}
 	public String getPassword() {
 		return password;
@@ -34,11 +36,11 @@ public class Staff {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getStaff_name() {
-		return staff_name;
+	public String getStaffName() {
+		return staffName;
 	}
-	public void setStaff_name(String staff_name) {
-		this.staff_name = staff_name;
+	public void setStaffName(String staffName) {
+		this.staffName = staffName;
 	}
 	public String getDepartment() {
 		return department;
@@ -46,49 +48,61 @@ public class Staff {
 	public void setDepartment(String department) {
 		this.department = department;
 	}
-	public String getState() {
+	public int getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
-	public String getUpdate_user() {
-		return update_user;
+	public String getUpdateUser() {
+		return updateUser;
 	}
-	public void setUpdate_user(String update_user) {
-		this.update_user = update_user;
+	public void setUpdateUser(String updateUser) {
+		this.updateUser = updateUser;
 	}
-	public Date getUpdate_date() {
-		return update_date;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
-	public void setUpdate_date(Date update_date) {
-		this.update_date = update_date;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
-	public Date getEff_date() {
-		return eff_date;
+	public Date getEffDate() {
+		return effDate;
 	}
-	public void setEff_date(Date eff_date) {
-		this.eff_date = eff_date;
+	public void setEffDate(Date effDate) {
+		this.effDate = effDate;
 	}
-	public Date getExp_date() {
-		return exp_date;
+	public Date getExpDate() {
+		return expDate;
 	}
-	public void setExp_date(Date exp_date) {
-		this.exp_date = exp_date;
+	public void setExpDate(Date expDate) {
+		this.expDate = expDate;
 	}
-	public String getIs_admin() {
-		return is_admin;
+	public String getPasswordTip() {
+		return passwordTip;
 	}
-	public void setIs_admin(String is_admin) {
-		this.is_admin = is_admin;
+	public void setPasswordTip(String passwordTip) {
+		this.passwordTip = passwordTip;
 	}
-	public String getPassword_tip() {
-		return password_tip;
+	public String getUpdateDateString() {
+		return updateDateString;
 	}
-	public void setPassword_tip(String password_tip) {
-		this.password_tip = password_tip;
+	public void setUpdateDateString(String updateDateString) {
+		this.updateDateString = updateDateString;
 	}
-
+	public String getEffDateString() {
+		return effDateString;
+	}
+	public void setEffDateString(String effDateString) {
+		this.effDateString = effDateString;
+	}
+	public String getExpDateString() {
+		return expDateString;
+	}
+	public void setExpDateString(String expDateString) {
+		this.expDateString = expDateString;
+	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,10 +117,10 @@ public class Staff {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (staff_id == null) {
-			if (other.staff_id != null)
+		if (staffId == null) {
+			if (other.staffId != null)
 				return false;
-		} else if (!staff_id.equals(other.staff_id))
+		} else if (!staffId.equals(other.staffId))
 			return false;
 		return true;
 	}
