@@ -23,7 +23,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<h3>当前在线人数：<%=request.getSession().getServletContext().getAttribute("currentUserNumber")%></h3>
 	</div>
 	<div class="main">
-		<form name="login" action="<%=path%>/servlet/LoginServlet" method="post">
+		<form name="login" action="<%=path%>/servlet.do?operate=login" method="post">
 	    	<table>
 	    		<tr>
 	    			<td><label for="staffId">用户名：</label></td>

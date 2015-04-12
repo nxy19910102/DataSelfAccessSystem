@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ page import="dao.SessionLogDAO" %>
-<%@ page import="entity.SessionLog" %>
+<%@ page import="administratorDAO.SessionLogDAO" %>
+<%@ page import="administratorEntity.SessionLog" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -13,14 +13,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>Data Self-Access System</title>
   </head>
   <body>
-  	<div align="center"><h1>会话日志</h1>
-	    <table width="1200px" border="1" align="center">
+  	<div align="center">
+  		<h1>会话日志</h1>
+  		<h4><a href="<%=path%>/logs/requestLog.jsp">访问日志</a></h4>
+	    <table width="1800px" border="1" align="center">
 	    	<tr>
 	    		<th height="30px">序号</th>
 	    		<th height="30px">会话ID</th>
 	    		<th height="30px">IP地址</th>
-	    		<th height="30px">登入时间</th>
 	    		<th height="30px">登入工号</th>
+	    		<th height="30px">登入时间</th>
+	    		<th height="30px">登出工号</th>
 	    	</tr>
 <%
 SessionLogDAO sessionLogDAO = new SessionLogDAO();
@@ -33,8 +36,9 @@ if (sessionLogList!=null&&sessionLogList.size()>0){
 	    		<td height="30px" align="center"><%=sessionLog.getId() %></td>
 	    		<td height="30px" align="center"><%=sessionLog.getSessionId() %></td>
 	    		<td height="30px" align="center"><%=sessionLog.getIpAddress() %></td>
-	    		<td height="30px" align="center"><%=sessionLog.getEffDate() %></td>
 	    		<td height="30px" align="center"><%=sessionLog.getStaffId() %></td>
+	    		<td height="30px" align="center"><%=sessionLog.getEffDateString() %></td>
+	    		<td height="30px" align="center"><%=sessionLog.getExpDateString() %></td>
 	    	</tr>
 <%
 	}

@@ -10,9 +10,9 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import dao.CurrentUserDAO;
-import dao.RequestLogDAO;
-import dao.SessionLogDAO;
+import administratorDAO.CurrentUserDAO;
+import administratorDAO.RequestLogDAO;
+import administratorDAO.SessionLogDAO;
 
 @WebListener
 public class RequestListener implements ServletRequestListener {
@@ -43,7 +43,7 @@ public class RequestListener implements ServletRequestListener {
 			staffId = "nologin";
 		}
 		Enumeration<String> enumer =request.getParameterNames();
-		
+
 		StringBuffer parameter = new StringBuffer();
 		String param;
 		while (enumer.hasMoreElements()){

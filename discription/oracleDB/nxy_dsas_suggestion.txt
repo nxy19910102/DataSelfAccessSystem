@@ -13,4 +13,17 @@ create sequence NXY_DSAS_SUGGESTION_ID increment by 1 start with 1 nomaxvalue no
 insert into NXY_DSAS_SUGGESTION (id,staff_id,url,server_path,detail,state,eff_date)
   values (0,'niuxy3','init','init','init',0,sysdate);
 commit;
---decode(state,0,'管理员已阅',1,'已提交')
+--decode(state,0,'已审阅',1,'已提交')
+/*public String getStateString() {
+		return stateString;
+	}
+	public void setStateString(int state) {
+		switch (state) {
+		case 0 : 
+			this.stateString = "已审阅";
+			break;
+		case 1 : 
+			this.stateString = "已提交";
+			break;
+		}
+	}*/

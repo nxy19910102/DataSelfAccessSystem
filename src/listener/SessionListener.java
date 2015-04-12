@@ -6,8 +6,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
-import dao.CurrentUserDAO;
-import dao.SessionLogDAO;
+import administratorDAO.CurrentUserDAO;
+import administratorDAO.SessionLogDAO;
 
 public class SessionListener implements HttpSessionListener {
 

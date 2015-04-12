@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.ErrorDAO;
+import administratorDAO.ErrorDAO;
 
 public class ErrorServlet extends HttpServlet {
 	private ErrorDAO errorDAO = new ErrorDAO();

@@ -22,7 +22,6 @@ public class CharacterFilter implements Filter {
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
-		
 		HttpServletRequest request = (HttpServletRequest) arg0;
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		
@@ -32,7 +31,7 @@ public class CharacterFilter implements Filter {
 		}
 		request.setCharacterEncoding(charset);
 		response.setCharacterEncoding(charset);
-		response.setContentType("text/html);charset="+charset);
+		response.setContentType("text/html; charset="+charset);
 		arg2.doFilter(arg0, arg1);
 	}
 

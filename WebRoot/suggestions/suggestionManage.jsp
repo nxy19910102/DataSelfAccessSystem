@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ page import="dao.SuggestDAO" %>
-<%@ page import="entity.Suggest" %>
+<%@ page import="administratorDAO.SuggestDAO" %>
+<%@ page import="administratorEntity.Suggest" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -38,7 +38,7 @@ if (suggestList!=null&&suggestList.size()>0){
 	    		<td height="30px" align="center"><%=suggest.getStaffId() %></td>
 	    		<td height="30px" align="center"><%=suggest.getUrl() %></td>
 	    		<td height="30px" align="center"><%=suggest.getDetail() %></td>
-	    		<td height="30px" align="center"><%=suggest.getState() %></td>
+	    		<td height="30px" align="center"><%=suggest.getStateString() %></td>
 	    		<td height="30px" align="center"><%=suggest.getEffDateString() %></td>
 	    		<td height="30px" align="center"><%=suggest.getExpDateString() %></td>
 	    	</tr>

@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ page import="dao.StaffDAO" %>
-<%@ page import="entity.Staff" %>
+<%@ page import="administratorDAO.StaffDAO" %>
+<%@ page import="administratorEntity.Staff" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";

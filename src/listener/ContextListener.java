@@ -8,9 +8,9 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import dao.AuthorityDAO;
-import entity.Authority;
-import entity.CurrentUser;
+import administratorDAO.AuthorityDAO;
+import administratorEntity.Authority;
+import administratorEntity.CurrentUser;
 import util.DBConnect;
 
 @WebListener

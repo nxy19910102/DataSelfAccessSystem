@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ page import="dao.RequestLogDAO" %>
-<%@ page import="entity.RequestLog" %>
+<%@ page import="administratorDAO.RequestLogDAO" %>
+<%@ page import="administratorEntity.RequestLog" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -15,6 +15,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
   	<div align="center">
   		<h1>访问日志</h1>
+  		<h4><a href="<%=path%>/logs/sessionLog.jsp">会话日志</a></h4>
 	    <table width="1800px" border="1" align="center">
 	    	<tr>
 	    		<th height="30px">序号</th>

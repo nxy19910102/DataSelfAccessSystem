@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.SuggestDAO;
+import administratorDAO.SuggestDAO;
 
 public class SuggestServlet extends HttpServlet {
 	private SuggestDAO suggestDAO = new SuggestDAO();

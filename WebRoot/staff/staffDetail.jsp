@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
-<%@ page import="dao.StaffDAO" %>
-<%@ page import="entity.Staff" %>
+<%@ page import="administratorDAO.StaffDAO" %>
+<%@ page import="administratorEntity.Staff" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -38,7 +38,7 @@ if (StaffList!=null&&StaffList.size()>0){
     		<td height="30px" align="center"><%=staff.getStaffId() %></td>
     		<td height="30px" align="center"><%=staff.getStaffName() %></td>
     		<td height="30px" align="center"><%=staff.getDepartment() %></td>
-    		<td height="30px" align="center"><%=staff.getState() %></td>
+    		<td height="30px" align="center"><%=staff.getStateString() %></td>
     		<td height="30px" align="center"><%=staff.getUpdateUser() %></td>
     		<td height="30px" align="center"><%=staff.getUpdateDateString() %></td>
     		<td height="30px" align="center"><%=staff.getEffDateString() %></td>

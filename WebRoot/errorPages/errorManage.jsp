@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ page import="dao.ErrorDAO" %>
-<%@ page import="entity.Error500" %>
+<%@ page import="administratorDAO.ErrorDAO" %>
+<%@ page import="administratorEntity.Error500" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -25,7 +25,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    		<th height="30px">状态</th>
 	    		<th height="30px">出现时间</th>
 	    		<th height="30px">解决时间</th>
-	    		<th height="30px">查看详情</th>
 	    	</tr>
 <%
 ErrorDAO errorDAO = new ErrorDAO();
@@ -39,10 +38,9 @@ if (errorList!=null&&errorList.size()>0){
 	    		<td height="30px" align="center"><%=error.getStaffId() %></td>
 	    		<td height="30px" align="center"><%=error.getUrl() %></td>
 	    		<td height="30px" align="center"><%=error.getDetail() %></td>
-	    		<td height="30px" align="center"><%=error.getState() %></td>
+	    		<td height="30px" align="center"><%=error.getStateString() %></td>
 	    		<td height="30px" align="center"><%=error.getEffDateString() %></td>
 	    		<td height="30px" align="center"><%=error.getExpDateString() %></td>
-	    		<td><a href='#'>查看详情</a></td>
 	    	</tr>
 <%
 	}

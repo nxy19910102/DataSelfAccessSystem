@@ -14,3 +14,13 @@ insert into NXY_DSAS_ERROR (id,staff_id,url,server_path,detail,state,eff_date)
   values (0,'niuxy3','init','init','init',1,sysdate);
 commit;
 --decode(state,0,'已解决',1,'未解决')
+/*public String getStateString() {
+		return stateString;
+	}
+	public void setStateString(int state) {
+		switch (state) {
+		case 0 :
+			this.stateString = "已解决";
+		case 1 :
+			this.stateString = "未解决";
+		}*/

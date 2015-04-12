@@ -24,3 +24,19 @@ insert into NXY_DSAS_STAFF (id,staff_id,password,staff_name,department,state,upd
   values (nxy_DSAS_staff_id.nextVal,'test2','pwd2','test2','部门2',0,'init',sysdate,sysdate,sysdate+100,'test2');
 commit;
 --decode(state,0,'正常',1,'冷冻',2,'注销')
+/*public String getStateString() {
+		return stateString;
+	}
+	public void setStateString(int state) {
+		switch (state) {
+		case 0 : 
+			this.stateString = "正常";
+			break;
+		case 1 : 
+			this.stateString = "冷冻";
+			break;
+		case 2 : 
+			this.stateString = "注销";
+			break;
+		}
+	}*/

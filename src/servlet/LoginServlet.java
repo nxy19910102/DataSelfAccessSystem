@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.StaffDAO;
+import administratorDAO.StaffDAO;
 
 public class LoginServlet extends HttpServlet {
 	
@@ -31,26 +31,33 @@ public class LoginServlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String path = request.getContextPath();
-		String staffId = null;
-		String password = null;
-		if (request.getParameter("staffId")!=null){
-			staffId = (String) request.getParameter("staffId");
-		}
-		if (request.getParameter("password")!=null){
-			password = (String) request.getParameter("password");
-		}
-		try {
-			if (staffDAO.judgeLogin(staffId,password)){
-				HttpSession session = request.getSession();
-				session.setAttribute("staffId", staffId);
-					request.getRequestDispatcher("../mainForUser.jsp").forward(request, response);
-			}else{
-				response.sendRedirect(path+"/loginFailure.jsp");
+		String operate = request.getParameter("operate");
+		switch (operate){
+		case("login"):{
+			String path = request.getContextPath();
+			String staffId = null;
+			String password = null;
+			if (request.getParameter("staffId")!=null){
+				staffId = (String) request.getParameter("staffId");
 			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			if (request.getParameter("password")!=null){
+				password = (String) request.getParameter("password");
+			}
+			try {
+				if (staffDAO.judgeLogin(staffId,password)){
+					HttpSession session = request.getSession();
+					session.setAttribute("staffId", staffId);
+						request.getRequestDispatcher("mainForUser.jsp").forward(request, response);
+				}else{
+					response.sendRedirect(path+"/loginFailure.jsp");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			break;
 		}
+		}
+		
 	}
 	
 	public void init() throws ServletException {
