@@ -27,8 +27,9 @@ public class DownloadServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//获取文件下载路径
-		String path = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/";
 //		String path = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/";
+		String path = "E:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/download/";
+//		String path = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/download/";
 		String filename = request.getParameter("filename");
 		File file = new File(path + filename);
 		if (file.exists()){
@@ -49,7 +50,7 @@ public class DownloadServlet extends HttpServlet {
 			inputStream.close();
 		} else {
 			request.setAttribute("download", "文件不存在下载失败");
-			request.getRequestDispatcher("../functions/download.jsp").forward(request, response);
+			request.getRequestDispatcher("../application/download.jsp").forward(request, response);
 		}
 	}
 

@@ -10,9 +10,9 @@ import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import administratorDAO.CurrentUserDAO;
-import administratorDAO.RequestLogDAO;
-import administratorDAO.SessionLogDAO;
+import administrationDAO.CurrentUserDAO;
+import administrationDAO.RequestLogDAO;
+import administrationDAO.SessionLogDAO;
 
 @WebListener
 public class RequestListener implements ServletRequestListener {
@@ -56,7 +56,6 @@ public class RequestListener implements ServletRequestListener {
 		String parameters = parameter.toString();
 		
 		RequestLogDAO.addRequestLog(sessionId, ipAddress, serverPath, staffId, parameters);
-		
 		if (!CurrentUserDAO.judgeCurrentUser(context, sessionId, ipAddress, staffId)) {
 			SessionLogDAO.addSessionLog(sessionId, ipAddress, staffId);
 			CurrentUserDAO.addCurrentUser(context, sessionId, ipAddress, staffId);

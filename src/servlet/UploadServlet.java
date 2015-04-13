@@ -31,8 +31,9 @@ public class UploadServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		//从request获得流信息
 		InputStream fileSource = request.getInputStream();
-		String tempFileName = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/tempFile";
 //		String tempFileName = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/tempFile";
+		String tempFileName = "E:/talent_path/Myeclipse/DataSelfAccessSystem/WebRoot/files/upload/tempFile";
+//		String tempFileName = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/upload/tempFile";
 		//tempFile指向临时文件
 		File tempFile = new File(tempFileName);
 		//outputStream输出流指向临时文件
@@ -82,8 +83,9 @@ public class UploadServlet extends HttpServlet {
 		}
 
 		//设置保存上传文件的路径
-		String realPath = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files";
 //		String realPath = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files";
+		String realPath = "E:/talent_path/Myeclipse/DataSelfAccessSystem/WebRoot/files/upload";
+//		String realPath = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/upload";
 		File fileupload = new File(realPath);
 		if (!fileupload.exists()){
 			fileupload.mkdir();
@@ -100,10 +102,10 @@ public class UploadServlet extends HttpServlet {
 		//关闭输入输出流，删除临时文件
 		randomAccessFile.close();
 		randomFile.close();
-//		tempFile.delete();
+		tempFile.delete();
 		
 		request.setAttribute("upload", "上传成功");
-		request.getRequestDispatcher("../functions/upload.jsp").forward(request, response);
+		request.getRequestDispatcher("../application/upload.jsp").forward(request, response);
 	}
 
 	public void init() throws ServletException {

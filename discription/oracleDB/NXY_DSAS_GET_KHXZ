@@ -1,8 +1,0 @@
---drop table NXY_DSAS_GET_KHXZ;
-create table NXY_DSAS_GET_KHXZ (
-  row_num number(12),
-  accNbr varchar2(200),
-  khxz varchar2(200),
-  wangge varchar2(200));
-drop sequence NXY_DSAS_GET_KHXZ_ID;
-create sequence NXY_DSAS_GET_KHXZ_ID increment by 1 start with 1 nomaxvalue nocycle;

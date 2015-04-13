@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8" %>
-<%@ page import="administratorDAO.ErrorDAO" %>
-<%@ page import="administratorEntity.Error500" %>
+<%@ page import="administrationDAO.ErrorDAO" %>
+<%@ page import="administrationEntity.Error500" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
