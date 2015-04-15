@@ -23,6 +23,20 @@ if (authorityDAO.checkAdministrator(request,staffId)){
   <body>
   	<div class="main">
   		<p>你好，<%=request.getSession().getAttribute("staffId")%></p>
+  		<div>
+  			<form name="logout" action="<%=path%>/servlet.do" method="post">
+  				<label for="logout">登出</label>
+  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input type="hidden" name="operate" value="logout">
+  			</form>
+  		</div>
+  		<div>
+  			<form name="documentBackup" action="<%=path%>/servlet.do" method="post">
+				<label for="suggestion">提建议</label>
+				<input id="suggestion" type="submit" value="进入">
+				<input type="hidden" name="operate" value="suggestion">
+			</form>
+  		</div>
   		<div class="<%=checkAdministrator%>">
   			<form name="appToAdmin" action="<%=path%>/servlet.do" method="post">
   				<label for="appToAdmin">管理界面</label>
@@ -32,7 +46,7 @@ if (authorityDAO.checkAdministrator(request,staffId)){
   		</div>
   		<div>
   			<form name="documentBackup" action="<%=path%>/servlet.do" method="post">
-  				<label for="documentBackup">签报备份</label>
+  				<label for="documentBackup">业务报备</label>
   				<input id="documentBackup" type="submit" value="进入">
   				<input type="hidden" name="operate" value="documentBackup">
   			</form>

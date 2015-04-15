@@ -13,8 +13,9 @@ import administrationDAO.ErrorDAO;
 import administrationDAO.StaffDAO;
 import administrationDAO.SuggestDAO;
 
-public class LoginServlet extends HttpServlet {
+public class DoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private String operate = null;
 	private StaffDAO staffDAO = new StaffDAO();
 	private SuggestDAO suggestDAO = new SuggestDAO();
 	private ErrorDAO errorDAO = new ErrorDAO();
@@ -22,7 +23,7 @@ public class LoginServlet extends HttpServlet {
 	private String password = "none";
 	private String detail = "none";
 
-	public LoginServlet() {
+	public DoServlet() {
 		super();
 	}
 
@@ -38,8 +39,21 @@ public class LoginServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String operate = request.getParameter("operate");
+		operate = request.getParameter("operate");
 		switch (operate){
+		case("logout"):{
+			session.removeAttribute("staffId");
+			response.sendRedirect("index.jsp");
+			break;
+		}
+		case("backToApp"):{
+			request.getRequestDispatcher("login/application.jsp").forward(request, response);
+			break;
+		}
+		case("backToAdmin"):{
+			request.getRequestDispatcher("login/administration.jsp").forward(request, response);
+			break;
+		}
 		case("login"):{
 			if (request.getParameter("staffId")!=null){
 				staffId = (String) request.getParameter("staffId");
@@ -50,7 +64,7 @@ public class LoginServlet extends HttpServlet {
 			try {
 				if (staffDAO.judgeLogin(staffId,password)){
 					session.setAttribute("staffId", staffId);
-						request.getRequestDispatcher("login/application.jsp").forward(request, response);
+					response.sendRedirect("login/application.jsp");
 				}else{
 					response.sendRedirect("login/loginFailure.jsp");
 				}
@@ -139,6 +153,18 @@ public class LoginServlet extends HttpServlet {
 		}
 		case("documentBackup"):{
 			request.getRequestDispatcher("application/documentBackup/documentBackup.jsp").forward(request, response);
+			break;
+		}
+		case("documentBackupUpload"):{
+			if (request.getParameter("attachment")=="1"){
+				request.getRequestDispatcher("application/documentBackup/documentBackupAttachment.jsp").forward(request, response);
+			} else {
+				request.getRequestDispatcher("application/documentBackup/documentBackupSuccess.jsp").forward(request, response);
+			}
+			break;
+		}
+		case("documentBackupAttachmentUpload"):{
+			request.getRequestDispatcher("application/documentBackup/documentBackupSuccess.jsp").forward(request, response);
 			break;
 		}
 		}

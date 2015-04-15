@@ -2,7 +2,6 @@
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-request.setAttribute("operate", "login");
  %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -35,10 +34,10 @@ request.setAttribute("operate", "login");
         		<td><input type="password" name="password" id="password" placeholder="请输入密码"></td>
         		<td>&nbsp;&nbsp;&nbsp;<a href="#">忘记密码</a></td>
         	</tr>
-        	<tr><input type="hidden" name="operate" value="login"></tr>
         	<tr>
         		<td><input type="submit" value="登录"></td>
         		<td><input type="reset" value="重置"></td>
+        		<td><input type="hidden" name="operate" value="login"></td>
         	</tr>
         </table>
 	    </form>
@@ -47,7 +46,6 @@ request.setAttribute("operate", "login");
 		<h3>此系统为本地开发，用于一些简单的数据需求自助提取</h3><br>
 		<h3>如有简单需求可在建议里写明</h3><br>
 		<h4>本地人力财力有限，开发和更新系统较慢</h4><br>
-		<h3><a href="<%=path%>/administration/suggestion/suggestion.jsp">提建议</a></h3><br>
 		<h3>测试阶段请直接点击以下链接</h3><br>
 		<h4><a href="<%=path%>/archive_odbc.jsp" target="_blank">查询原始档案</a><br><br>
 		<a href="<%=path %>/qf_tz_odbc.jsp" target="_blank">查询欠费信息生成调账表</a></h4>

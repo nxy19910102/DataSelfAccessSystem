@@ -16,7 +16,11 @@ request.setCharacterEncoding("utf-8");
     	<h1>建议上传成功</h1>
     	<h2>您的留言是：</h2>
     	<h3><%=request.getParameter("detail") %></h3>
-    	<h2><a href="<%=path %>/index.jsp">返回首页</a></h2>
+    	<form name="backToApp" action="<%=path%>/servlet.do" method="post">
+			<label for="staff">返回主目录</label>
+			<input id="staff" type="submit" value="进入" style="display:none;">
+			<input type="hidden" name="operate" value="backToApp">
+		</form>
     </div>
   </body>
 </html>

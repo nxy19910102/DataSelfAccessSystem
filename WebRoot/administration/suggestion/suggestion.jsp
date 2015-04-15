@@ -26,7 +26,17 @@ suggestDAO.addSuggest(staffId, remoteAddr, detail);
  %>
   <body>
   	<div class="main">
-    	<h1></h1>
+    	<label>你好，<%=request.getSession().getAttribute("staffId")%></label>
+    	<form name="logout" action="<%=path%>/servlet.do" method="post">
+  				<label for="logout">登出</label>
+  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input type="hidden" name="operate" value="logout">
+		</form>
+		<form name="backToApp" action="<%=path%>/servlet.do" method="post">
+			<label for="backToApp">返回上级</label>
+			<input id="backToApp" type="submit" value="进入" style="display:none;">
+			<input type="hidden" name="operate" value="backToApp">
+		</form>
     	<h2>请在下方写上您的建议，并附上工号，联系电话等信息以便沟通（500字以内）</h2>
     	<form name="suggestionUpload" action="<%=path%>/servlet.do" method="post">
     		<textarea name="detail" rows="10" cols="60" placeholder="您的建议"></textarea><br>

@@ -4,8 +4,8 @@
 	util: DBconnect.java
 	administrationDAO: AuthorityDAO.java, CurrentUserDAO.java, ErrorDAO.java, RequestLogDAO.java, SessionLogDAO.java, StaffDAO.java, SuggestDAO.java
 	administratioEntity: Authority,java, CurrentUser.java, Error500.java, RequestLog.java, SessionLog.java, Staff.java, Suggest.java
-	applicationDAO: 
-	applicationEntity: 
+	applicationDAO: DocumentBackupDAO.java
+	applicationEntity: DocumentBackup.java
 	filter: CharactorFilter.java, ErrorFilter.java, LoginFilter.java
 	listener: ContextListener.java, RequestListener.java, SessionListener.java
 	servlet: LoginServlet.java
@@ -17,6 +17,7 @@
 	log: requestLog.jsp, sessionLog.jsp
 	staff: curerntUser.jsp, staffDetail.jsp, staffManage.jsp
 	suggestion: suggestion.jsp, suggestionManage.jsp, suggestionUpload.jsp
+	documentBackup: documentBackup,jsp, documentBackupAttachment.jsp, documentBackupSuccess.jsp
 
 DAFS实现功能：
 	登录界面为普通用户，登陆后可选择管理员模式
@@ -27,19 +28,19 @@ DAFS实现功能：
 	错误处理系统（错误提交，错误查看）
 
 本次更新成果：
-	修改suggest url为客户端ip
-	建立login目录
-	利用request参数化简servlet
+	建立签报系统
+	暂停在线用户功能
 下一阶段计划：
+	为所有页面加上头div
 	上传的ie兼容性
 	下载多一个问号
-	当前在线用户无法去除
 	业务量日报
 	签报
 	khxz
 	分页显示数据
 
 待开发功能：
+	当前在线用户无法去除
 	sessionLog exp 测试,sessionListener无效,sessionLog DateToString
 	staff 失效日期处理
 	cookie

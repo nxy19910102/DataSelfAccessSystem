@@ -8,11 +8,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">	
     <title>Data Self-Access System</title>
-	<link rel="stylesheet" type="text/css" href="styles/index.css">
+	<link rel="stylesheet" type="text/css" href="styles/administration.css">
   </head>
   <body>
   	<div class="main">
   		<p>你好，<%=request.getSession().getAttribute("staffId")%></p>
+  		<div>
+  			<form name="logout" action="<%=path%>/servlet.do" method="post">
+  				<label for="logout">登出</label>
+  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input type="hidden" name="operate" value="logout">
+  			</form>
+  			<form name="backToApp" action="<%=path%>/servlet.do" method="post">
+  				<label for="backToApp">返回上级</label>
+  				<input id="backToApp" type="submit" value="进入" style="display:none;">
+  				<input type="hidden" name="operate" value="backToApp">
+  			</form>
+  		</div>
   		<div>
   			<form name="staff" action="<%=path%>/servlet.do" method="post">
   				<label for="staff">员工管理</label>

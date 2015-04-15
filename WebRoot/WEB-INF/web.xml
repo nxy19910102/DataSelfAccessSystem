@@ -14,16 +14,16 @@
     <error-code>500</error-code>
     <location>/administration/error/error500.jsp</location>
   </error-page>
-  <servlet id="LoginServlet">
-    <description>main servlet</description>
-    <display-name>LoginServlet</display-name>
-    <servlet-name>LoginServlet</servlet-name>
-    <servlet-class>servlet.LoginServlet</servlet-class>
-    <enabled>true</enabled>
-    <async-supported>true</async-supported>
+  <servlet id="DoServlet">
+  	<description>deal requests</description>
+    <display-name>DoServlet</display-name>
+    <servlet-name>DoServlet</servlet-name>
+    <servlet-class>servlet.DoServlet</servlet-class>
+        <enabled>true</enabled>
+        <async-supported>true</async-supported>
   </servlet>
   <servlet-mapping>
-    <servlet-name>LoginServlet</servlet-name>
+    <servlet-name>DoServlet</servlet-name>
     <url-pattern>/servlet.do</url-pattern>
   </servlet-mapping>
   <servlet id="UploadServlet">
@@ -58,7 +58,7 @@
     <async-supported>true</async-supported>
     <init-param>
       <param-name>filterException</param-name>
-      <param-value>index.jsp;loginFailure.jsp;servlet.do;suggestion.jsp;loginFailure;error404;error500;errorUploaded;ErrorServlet;archive_odbc;qf_tz_odbc</param-value>
+      <param-value>index.jsp;loginFailure;Servlet.do;error404;error500;archive_odbc;qf_tz_odbc</param-value>
     </init-param>
   </filter>
   <filter-mapping>
