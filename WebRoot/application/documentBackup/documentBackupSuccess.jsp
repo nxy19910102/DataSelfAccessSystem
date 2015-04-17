@@ -10,12 +10,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>Data Self-Access System</title>
   </head>
   <body>
-    <h1>签报备份</h1>
-   	<label>上传成功</label>
-   	<form name="documentBackupUploadSuccess" action="<%=path%>/servlet.do" method="post" enctype="multipart/form-data">
-    	<label for="target">选择上传文件：</label>
-		<input type="submit" value="提交">
-		<input type="hidden" name="operate" value="documentBackupUploadSuccess">
-    </form>
+  	<div class="main">
+    	<label>你好，<%=request.getSession().getAttribute("staffId")%></label>
+    	<form name="logout" action="<%=path%>/servlet.do" method="post">
+  				<label for="logout">登出</label>
+  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input type="hidden" name="operate" value="logout">
+		</form>
+		<form name="backToApp" action="<%=path%>/servlet.do" method="post">
+			<label for="backToApp">返回主菜单</label>
+			<input id="backToApp" type="submit" value="进入" style="display:none;">
+			<input type="hidden" name="operate" value="backToApp">
+		</form>
+	</div>
+    <h1>业务报备</h1>
+   	<label>上传成功!</label>
   </body>
 </html>

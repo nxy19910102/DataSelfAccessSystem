@@ -92,7 +92,7 @@ public class StaffDAO {
 		return staffList;
 	}
 
-//	LoginServlet.java
+//	DoServlet.java
 	public boolean judgeLogin(String staffId,String password) throws SQLException{
 		ArrayList<Staff> StaffList = new ArrayList<Staff>();
 		Staff staff = null;

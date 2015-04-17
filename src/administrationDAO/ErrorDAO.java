@@ -12,7 +12,7 @@ import util.DBConnect;
 
 public class ErrorDAO {
 	
-//	ErrorServlet.java, error500.jsp
+//	DoServlet.java
 	public void addError(String staffId,String url,String serverPath,String detail) throws SQLException{
 		Connection conn = DBConnect.getConnection();
 		String sql = "insert into nxy_dsas_error ("

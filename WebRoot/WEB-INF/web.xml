@@ -36,7 +36,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>UploadServlet</servlet-name>
-    <url-pattern>/servlet/UploadServlet</url-pattern>
+    <url-pattern>/servlet.upload</url-pattern>
   </servlet-mapping>
   <servlet id="DownloadServlet">
     <description>use for download files</description>
@@ -46,9 +46,10 @@
         <enabled>true</enabled>
         <async-supported>true</async-supported>
   </servlet>
+
   <servlet-mapping>
     <servlet-name>DownloadServlet</servlet-name>
-    <url-pattern>/servlet/DownloadServlet</url-pattern>
+    <url-pattern>/servlet.download</url-pattern>
   </servlet-mapping>
   <filter id="LoginFilter">
     <description>filt nologin</description>
@@ -58,7 +59,7 @@
     <async-supported>true</async-supported>
     <init-param>
       <param-name>filterException</param-name>
-      <param-value>index.jsp;loginFailure;Servlet.do;error404;error500;archive_odbc;qf_tz_odbc</param-value>
+      <param-value>index.jsp;loginFailure.jsp;servlet.do;error404;error500;archive_odbc;qf_tz_odbc</param-value>
     </init-param>
   </filter>
   <filter-mapping>

@@ -11,13 +11,13 @@
 	servlet: LoginServlet.java
 	CSS: 
 	contextAttribute: authorityList, currentUserList, currentUserNumber
-	sessionAttribute: staffId
+	sessionAttribute: docDepartment, docStaff, staffId, uploadKey
 	login: administration.jsp, application.jsp, archive_odbc.jsp, index.jsp, loginFailure.jsp, qf_tz_odbc.jsp
 	error: error404.jsp, error500.jsp, errorManege.jsp, errorUpload.jsp
 	log: requestLog.jsp, sessionLog.jsp
 	staff: curerntUser.jsp, staffDetail.jsp, staffManage.jsp
 	suggestion: suggestion.jsp, suggestionManage.jsp, suggestionUpload.jsp
-	documentBackup: documentBackup,jsp, documentBackupAttachment.jsp, documentBackupSuccess.jsp
+	documentBackup: documentBackup.jsp, documentBackupAttachment.jsp, documentBackupQuery.jsp, documentBackupSuccess.jsp
 
 DAFS实现功能：
 	登录界面为普通用户，登陆后可选择管理员模式
@@ -28,10 +28,9 @@ DAFS实现功能：
 	错误处理系统（错误提交，错误查看）
 
 本次更新成果：
-	建立签报系统
-	暂停在线用户功能
+	报备上传
+	
 下一阶段计划：
-	为所有页面加上头div
 	上传的ie兼容性
 	下载多一个问号
 	业务量日报

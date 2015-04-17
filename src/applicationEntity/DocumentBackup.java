@@ -18,6 +18,8 @@ public class DocumentBackup {
 	private String docDetail;
 	private String attachmentAddress;
 	private String dealStaff;
+	private int docState;
+	private String docStateString;
 	
 	public Long getId() {
 		return id;
@@ -115,6 +117,12 @@ public class DocumentBackup {
 	public void setDealStaff(String dealStaff) {
 		this.dealStaff = dealStaff;
 	}
+	public int getDocState() {
+		return docState;
+	}
+	public void setDocState(int docState) {
+		this.docState = docState;
+	}
 	public String getTargetString() {
 		return targetString;
 	}
@@ -128,6 +136,19 @@ public class DocumentBackup {
 			break;
 		default :
 			this.targetString = "其他";
+		}
+	}
+	public String getDocStateString() {
+		return docStateString;
+	}
+	public void setDocStateString(int docState) {
+		switch(docState){
+		case 0: 
+			this.docStateString = "正常";
+			break;
+		case 1:
+			this.docStateString = "失效";
+			break;
 		}
 	}
 }

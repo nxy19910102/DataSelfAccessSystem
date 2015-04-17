@@ -12,16 +12,11 @@ import javax.servlet.http.HttpSession;
 import administrationDAO.ErrorDAO;
 import administrationDAO.StaffDAO;
 import administrationDAO.SuggestDAO;
+import applicationDAO.DocumentBackupDAO;
 
 public class DoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private String operate = null;
-	private StaffDAO staffDAO = new StaffDAO();
-	private SuggestDAO suggestDAO = new SuggestDAO();
-	private ErrorDAO errorDAO = new ErrorDAO();
-	private String staffId = "none";
-	private String password = "none";
-	private String detail = "none";
 
 	public DoServlet() {
 		super();
@@ -55,12 +50,15 @@ public class DoServlet extends HttpServlet {
 			break;
 		}
 		case("login"):{
+			String password = "none";
+			String staffId = "none";
 			if (request.getParameter("staffId")!=null){
-				staffId = (String) request.getParameter("staffId");
+				staffId = request.getParameter("staffId");
 			}
 			if (request.getParameter("password")!=null){
-				password = (String) request.getParameter("password");
+				password = request.getParameter("password");
 			}
+			StaffDAO staffDAO = new StaffDAO();
 			try {
 				if (staffDAO.judgeLogin(staffId,password)){
 					session.setAttribute("staffId", staffId);
@@ -102,13 +100,16 @@ public class DoServlet extends HttpServlet {
 			break;
 		}
 		case("suggestionUpload"):{
+			String staffId = "none";
 			String url = request.getRequestURL().toString();
+			String detail = "none";
 			if (session.getAttribute("staffId")!=null){
 				staffId = (String) session.getAttribute("staffId");
 			}
 			if (request.getParameter("detail")!=""){
 				detail = request.getParameter("detail");
 			}
+			SuggestDAO suggestDAO = new SuggestDAO();
 			try {
 				suggestDAO.addSuggest(staffId, url, detail);
 			} catch (SQLException e) {
@@ -122,15 +123,17 @@ public class DoServlet extends HttpServlet {
 			break;
 		}
 		case("error"):{
+			String staffId = "none";
 			String url = request.getRequestURL().toString();
 			String serverPath = request.getServletPath();
+			String detail = "none";
 			if (session.getAttribute("staffId")!=null){
 				staffId = (String) session.getAttribute("staffId");
 			}
 			if (request.getParameter("detail")!=""){
 				detail = request.getParameter("detail");
 			}
-
+			ErrorDAO errorDAO = new ErrorDAO();
 			try {
 				errorDAO.addError(staffId,url,serverPath,detail);
 			} catch (SQLException e) {
@@ -156,8 +159,34 @@ public class DoServlet extends HttpServlet {
 			break;
 		}
 		case("documentBackupUpload"):{
-			if (request.getParameter("attachment")=="1"){
-				request.getRequestDispatcher("application/documentBackup/documentBackupAttachment.jsp").forward(request, response);
+			int target = Integer.parseInt(request.getParameter("target"));
+			int targetYear = Integer.parseInt(request.getParameter("targetYear"));
+			int targetSeq;
+			if (request.getParameter("targetSeq") == "") {
+				targetSeq = 0;
+			} else {
+				targetSeq = Integer.parseInt(request.getParameter("targetSeq"));
+			}
+			String docTitle = request.getParameter("docTitle");
+			String docStaff = request.getParameter("docStaff");
+			String docDepartment = request.getParameter("docDepartment");
+			int startYear = Integer.parseInt(request.getParameter("startYear"));
+			int startMonth = Integer.parseInt(request.getParameter("startMonth"));
+			int startDay = Integer.parseInt(request.getParameter("startDay"));
+			int dealYear = Integer.parseInt(request.getParameter("dealYear"));
+			int dealMonth = Integer.parseInt(request.getParameter("dealMonth"));
+			int dealDay = Integer.parseInt(request.getParameter("dealDay"));
+			String docDetail = request.getParameter("docDetail");
+			int attachment = Integer.parseInt(request.getParameter("attachment"));
+			String dealStaff = (String) session.getAttribute("staffId");
+			DocumentBackupDAO documentBackupDAO = new DocumentBackupDAO();
+			try {
+				documentBackupDAO.addDocumentBackup(target, targetYear, targetSeq, docTitle, docStaff, docDepartment, startYear, startMonth, startDay, dealYear, dealMonth, dealDay, docDetail, dealStaff);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			if (attachment == 1) {
+				request.getRequestDispatcher("application/documentBackup/documentBackupAttachment.jsp?uploadKey=documentBackupAttachmentUpload&target=" + target + "&targetYear=" + targetYear + "&targetSeq=" + targetSeq).forward(request, response);
 			} else {
 				request.getRequestDispatcher("application/documentBackup/documentBackupSuccess.jsp").forward(request, response);
 			}
@@ -165,6 +194,10 @@ public class DoServlet extends HttpServlet {
 		}
 		case("documentBackupAttachmentUpload"):{
 			request.getRequestDispatcher("application/documentBackup/documentBackupSuccess.jsp").forward(request, response);
+			break;
+		}
+		case("DocumentBackupQuery"):{
+			request.getRequestDispatcher("application/documentBackup/documentBackupQuery.jsp").forward(request, response);
 			break;
 		}
 		}

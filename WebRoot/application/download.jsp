@@ -18,5 +18,5 @@ if (request.getAttribute("download") != null){
   <body>
   	<p>下载测试</p>
   	<a href="<%=path%>/servlet/DownloadServlet?filename=test1.txt">下载测试</a><%=download%>
-  </body>	
+  </body>
 </html>

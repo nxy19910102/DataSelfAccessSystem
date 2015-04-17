@@ -28,7 +28,7 @@ public class DownloadServlet extends HttpServlet {
 			throws ServletException, IOException {
 		//获取文件下载路径
 //		String path = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/";
-		String path = "E:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/download/";
+		String path = "E:/talent_path/Myeclipse/DataSelfAccessSystem/WebRoot/files/download/";
 //		String path = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/download/";
 		String filename = request.getParameter("filename");
 		File file = new File(path + filename);

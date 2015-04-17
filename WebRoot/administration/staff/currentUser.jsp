@@ -15,8 +15,21 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     <style></style>
   </head>
   <body>
+  	<div class="main">
+    	<label>你好，<%=request.getSession().getAttribute("staffId")%></label>
+    	<form name="logout" action="<%=path%>/servlet.do" method="post">
+  				<label for="logout">登出</label>
+  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input type="hidden" name="operate" value="logout">
+		</form>
+		<form name="backToApp" action="<%=path%>/servlet.do" method="post">
+			<label for="backToApp">返回主菜单</label>
+			<input id="backToApp" type="submit" value="进入" style="display:none;">
+			<input type="hidden" name="operate" value="backToApp">
+		</form>
+	</div>
     <h1 align="center">当前用户</h1>
-    <table width="1200px" border="1" align="center">
+    <table width="1800px" border="1" align="center">
     	<tr>
     		<th height="30px">会话ID</th>
     		<th height="30px">IP地址</th>

@@ -17,9 +17,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="main">
 		<h1>自助取数系统</h1>
 	</div>
-	<div class="main">
+	<%-- <div class="main">
 		<h3>当前在线人数：<%=request.getSession().getServletContext().getAttribute("currentUserNumber")%></h3>
-	</div>
+	</div> --%>
 	<div class="main">
 		<form name="login" action="<%=path%>/servlet.do" method="post">
     	<table>
@@ -35,8 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         		<td>&nbsp;&nbsp;&nbsp;<a href="#">忘记密码</a></td>
         	</tr>
         	<tr>
+        		<td><input type="hidden"></td>
         		<td><input type="submit" value="登录"></td>
-        		<td><input type="reset" value="重置"></td>
         		<td><input type="hidden" name="operate" value="login"></td>
         	</tr>
         </table>

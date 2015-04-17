@@ -52,6 +52,13 @@ if (authorityDAO.checkAdministrator(request,staffId)){
   			</form>
   		</div>
   		<div>
+  			<form name="DocumentBackupQuery" action="<%=path%>/servlet.do" method="post">
+  				<label for="DocumentBackupQuery">报备查询</label>
+  				<input id="DocumentBackupQuery" type="submit" value="进入">
+  				<input type="hidden" name="operate" value="DocumentBackupQuery">
+  			</form>
+  		</div>
+  		<div>
   			<form name="upload" action="<%=path%>/servlet.do" method="post">
   				<label for="upload">上传测试</label>
   				<input id="upload" type="submit" value="进入">

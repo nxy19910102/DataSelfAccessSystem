@@ -15,16 +15,18 @@ create table NXY_DSAS_DOCUMENT_BACKUP (
   deal_day number(2),
   doc_detail varchar2(2000),
   attachment_address varchar2(2000),
-  deal_staff varchar2(200));
+  deal_staff varchar2(200),
+  doc_state number(1));
 drop sequence NXY_DSAS_DOCUMENT_BACKUP_ID;
 create sequence NXY_DSAS_DOCUMENT_BACKUP_ID increment by 1 start with 1 nomaxvalue nocycle;
 insert into NXY_DSAS_DOCUMENT_BACKUP (id,target,target_year,target_seq,doc_title,
  doc_staff,doc_department,start_year,start_month,start_day,deal_year,deal_month,
- deal_day,doc_detail,attachment_address,deal_staff) values (
+ deal_day,doc_detail,attachment_address,deal_staff,doc_state) values (
   0,0,to_number(to_char(sysdate,'yyyy')),0,'doc_title','doc_staff','doc_department',
   to_number(to_char(sysdate-1,'yyyy')),to_number(to_char(sysdate-1,'mm')),
   to_number(to_char(sysdate-1,'dd')),to_number(to_char(sysdate,'yyyy')),
   to_number(to_char(sysdate,'mm')),to_number(to_char(sysdate,'dd')),'doc_detail',
-  'attachment_address','niuxy3');
+  'attachment_address','niuxy3',0);
 commit;
 --decode(target,1,'签报',2,'内部联系单','其他')
+--decode(doc_state,0,'正常',1,'失效')

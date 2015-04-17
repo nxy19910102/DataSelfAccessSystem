@@ -12,7 +12,7 @@ import util.DBConnect;
 
 public class SuggestDAO {
 	
-//	LoginServlet.java
+//	DoServlet.java
 	public void addSuggest(String staffId, String url, String detail) throws SQLException{
 		Connection conn = DBConnect.getConnection();
 		String sql = "insert into NXY_DSAS_SUGGESTION ("
