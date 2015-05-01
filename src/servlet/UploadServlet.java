@@ -13,8 +13,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import applicationDAO.DocumentBackupDAO;
 
 public class UploadServlet extends HttpServlet {
@@ -32,7 +30,7 @@ public class UploadServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String filePath = null;
 		String uploadKey = request.getParameter("uploadKey");
-		switch (uploadKey){
+		switch (uploadKey) {
 		case ("documentBackupAttachmentUpload"):
 			int target = Integer.parseInt(request.getParameter("target"));
 			int targetYear = Integer.parseInt(request.getParameter("targetYear"));
@@ -56,6 +54,7 @@ public class UploadServlet extends HttpServlet {
 	public void init() throws ServletException {
 	}
 	
+	//用于将文件上传到临时文件，再写入目标文件
 	public String doUpload (HttpServletRequest request, String uploadKey, String filePath) throws IOException {
 		Date date = new Date();
 		//从request获得流信息
@@ -114,6 +113,7 @@ public class UploadServlet extends HttpServlet {
 		//后缀
 		int beginIndex = str.lastIndexOf(".");
 		int endIndex = str.lastIndexOf("\"");
+		
 		String fileNameSuffix = str.substring(beginIndex, endIndex);
 		String filename = this.generateFilename(request, uploadKey, fileNameSuffix);
 				
@@ -133,8 +133,9 @@ public class UploadServlet extends HttpServlet {
 		return saveFile.toString();
 	}
 	
+	//使用相应规则生成文件名
 	public String generateFilename (HttpServletRequest request, String uploadKey, String fileNameSuffix) {
-		switch (uploadKey){
+		switch (uploadKey) {
 		case ("documentBackupAttachmentUpload"):
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 			String docDepartment = request.getParameter("docDepartment");

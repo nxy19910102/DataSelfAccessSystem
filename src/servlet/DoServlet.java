@@ -62,7 +62,7 @@ public class DoServlet extends HttpServlet {
 			try {
 				if (staffDAO.judgeLogin(staffId,password)){
 					session.setAttribute("staffId", staffId);
-					response.sendRedirect("login/application.jsp");
+					request.getRequestDispatcher("login/application.jsp").forward(request, response);;
 				}else{
 					response.sendRedirect("login/loginFailure.jsp");
 				}
@@ -186,7 +186,7 @@ public class DoServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			if (attachment == 1) {
-				request.getRequestDispatcher("application/documentBackup/documentBackupAttachment.jsp?uploadKey=documentBackupAttachmentUpload&target=" + target + "&targetYear=" + targetYear + "&targetSeq=" + targetSeq).forward(request, response);
+				request.getRequestDispatcher("application/documentBackup/documentBackupAttachment.jsp?uploadKey=documentBackupAttachmentUpload&targetSeq=" + targetSeq).forward(request, response);
 			} else {
 				request.getRequestDispatcher("application/documentBackup/documentBackupSuccess.jsp").forward(request, response);
 			}
@@ -196,8 +196,12 @@ public class DoServlet extends HttpServlet {
 			request.getRequestDispatcher("application/documentBackup/documentBackupSuccess.jsp").forward(request, response);
 			break;
 		}
-		case("DocumentBackupQuery"):{
+		case("documentBackupQuery"):{
 			request.getRequestDispatcher("application/documentBackup/documentBackupQuery.jsp").forward(request, response);
+			break;
+		}
+		case("documentBackupQueryPart"):{
+			request.getRequestDispatcher("application/documentBackup/documentBackupQueryPart.jsp").forward(request, response);
 			break;
 		}
 		}

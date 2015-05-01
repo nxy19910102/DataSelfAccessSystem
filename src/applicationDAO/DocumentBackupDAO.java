@@ -67,20 +67,20 @@ public class DocumentBackupDAO {
 		while (rs.next()){
 			documentBackup = new DocumentBackup();
 			documentBackup.setTargetString(rs.getInt("target"));
-			documentBackup.setTargetYear(rs.getInt("targetYear"));
-			documentBackup.setTargetSeq(rs.getInt("targetSeq"));
-			documentBackup.setDocTitle(rs.getString("docTitle"));
-			documentBackup.setDocStaff(rs.getString("docStaff"));
-			documentBackup.setDocDepartment(rs.getString("docDepartment"));
-			documentBackup.setStartYear(rs.getInt("startYear"));
-			documentBackup.setStartMonth(rs.getInt("startMonth"));
-			documentBackup.setStartDay(rs.getInt("startDay"));
-			documentBackup.setDealYear(rs.getInt("dealYear"));
-			documentBackup.setDealMonth(rs.getInt("dealMonth"));
-			documentBackup.setDealDay(rs.getInt("dealDay"));
-			documentBackup.setDocDetail(rs.getString("docDetail"));
-			documentBackup.setAttachmentAddress(rs.getString("attachmentAddress"));
-			documentBackup.setDealStaff(rs.getString("dealStaff"));
+			documentBackup.setTargetYear(rs.getInt("target_year"));
+			documentBackup.setTargetSeq(rs.getInt("target_seq"));
+			documentBackup.setDocTitle(rs.getString("doc_title"));
+			documentBackup.setDocStaff(rs.getString("doc_staff"));
+			documentBackup.setDocDepartment(rs.getString("doc_department"));
+			documentBackup.setStartYear(rs.getInt("start_year"));
+			documentBackup.setStartMonth(rs.getInt("start_month"));
+			documentBackup.setStartDay(rs.getInt("start_day"));
+			documentBackup.setDealYear(rs.getInt("deal_year"));
+			documentBackup.setDealMonth(rs.getInt("deal_month"));
+			documentBackup.setDealDay(rs.getInt("deal_day"));
+			documentBackup.setDocDetail(rs.getString("doc_detail"));
+			documentBackup.setAttachmentAddress(rs.getString("attachment_address"));
+			documentBackup.setDealStaff(rs.getString("deal_staff"));
 			documentBackupList.add(documentBackup);
 		}
 		rs.close();

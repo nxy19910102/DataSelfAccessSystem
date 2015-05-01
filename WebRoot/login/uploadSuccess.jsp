@@ -23,6 +23,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<input type="hidden" name="operate" value="backToApp">
 		</form>
 	</div>
-   	<label>上传成功!</label>
+	<label>上传成功!</label>
   </body>
 </html>

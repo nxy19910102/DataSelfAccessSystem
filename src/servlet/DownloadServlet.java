@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class DownloadServlet extends HttpServlet {
-//	path
 	private static final long serialVersionUID = 1L;
 
 	public void destroy() {
@@ -27,13 +26,13 @@ public class DownloadServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		//获取文件下载路径
-//		String path = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/";
-		String path = "E:/talent_path/Myeclipse/DataSelfAccessSystem/WebRoot/files/download/";
-//		String path = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/download/";
-		String filename = request.getParameter("filename");
-		File file = new File(path + filename);
+		String realPath = request.getParameter("realPath");
+		int beginIndex = realPath.lastIndexOf("\\") + 1;
+		String filename = realPath.substring(beginIndex);
+		String filePath = realPath.replace("\\", "/");
+		File file = new File(filePath);
 		if (file.exists()){
-			//设置响应类型(application/octet-stream)
+			//设置响应类型(或application/octet-stream)
 			response.setContentType("application/x-msdownload");
 			//设置头信息
 			response.setHeader("Content-Disposition", "attachment; filename=\"" + filename + "\"");
@@ -44,13 +43,11 @@ public class DownloadServlet extends HttpServlet {
 			while ((n = inputStream.read(b)) != -1){
 				outputStream.write(b, 0, n);
 			}
-			request.setAttribute("download", "文件下载成功");
 			//关闭流，释放资源
 			outputStream.close();
 			inputStream.close();
 		} else {
-			request.setAttribute("download", "文件不存在下载失败");
-			request.getRequestDispatcher("../application/download.jsp").forward(request, response);
+			response.sendRedirect("login/downloadFailure.jsp");
 		}
 	}
 
