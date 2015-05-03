@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import administrationEntity.Staff;
 import applicationEntity.DocumentBackup;
 import util.DBConnect;
 
@@ -56,13 +55,49 @@ public class DocumentBackupDAO {
 			return true;
 		}
 	
-	public ArrayList<DocumentBackup> showDocumentBackup() throws SQLException{
+//	documentBackupQuery
+	public ArrayList<DocumentBackup> showDocumentBackup(String targetYear,String targetSeq,String docTitle,String docStaff,String docDepartment,String startYear,String startMonth,String startDay,String dealYear,String dealMonth,String dealDay) throws SQLException{
+		StringBuffer stringBufferBuilder = new StringBuffer();
+		stringBufferBuilder.append("select * from nxy_dsas_document_backup where doc_state=0 ");
+		if (targetYear != null && targetYear != ""){
+			stringBufferBuilder.append("and target_year=" + targetYear + " ");
+		}
+		if (targetSeq != null && targetSeq != ""){
+			stringBufferBuilder.append("and target_seq=" + targetSeq + " ");
+		}
+		if (docTitle != null && docTitle != ""){
+			stringBufferBuilder.append("and doc_title like '%" + docTitle + "%' ");
+		}
+		if (docStaff != null && docStaff != ""){
+			stringBufferBuilder.append("and doc_staff like '%" + docStaff + "%' ");
+		}
+		if (docDepartment != null && docDepartment != ""){
+			stringBufferBuilder.append("and doc_department like '%" + docDepartment + "%' ");
+		}
+		if (startYear != null && startYear != ""){
+			stringBufferBuilder.append("and start_year=" + startYear + " ");
+		}
+		if (startMonth != null && startMonth != ""){
+			stringBufferBuilder.append("and start_month=" + startMonth + " ");
+		}
+		if (startDay != null && startDay != ""){
+			stringBufferBuilder.append("and start_day=" + startDay + " ");
+		}
+		if (dealYear != null && dealYear != ""){
+			stringBufferBuilder.append("and deal_year=" + dealYear + " ");
+		}
+		if (dealMonth != null && dealMonth != ""){
+			stringBufferBuilder.append("and deal_month=" + dealMonth + " ");
+		}
+		if (dealDay != null && dealDay != ""){
+			stringBufferBuilder.append("and deal_day=" + dealDay + " ");
+		}
 		ArrayList<DocumentBackup> documentBackupList = new ArrayList<DocumentBackup>();
 		DocumentBackup documentBackup = null;
 		Connection conn = DBConnect.getConnection();
-		String sql = "select * from nxy_dsas_document_backup "
-			+"where doc_state=0 order by id desc";
 		Statement st = conn.createStatement();
+		String sql = stringBufferBuilder.toString();
+		System.out.println(sql);
 		ResultSet rs = st.executeQuery(sql);
 		while (rs.next()){
 			documentBackup = new DocumentBackup();

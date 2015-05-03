@@ -9,9 +9,9 @@ import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class DatabaseToExcel {
@@ -33,7 +33,7 @@ public class DatabaseToExcel {
 		for (int i=1;i<10;i++){
 			HSSFRow nextRow = sheet.createRow(i);
 			HSSFCell cell2 = nextRow.createCell(0);
-			cell2.setCellValue("a");
+			cell2.setCellValue("a" + i);
 		}
 		//创建一个文件
 		File file = new File("D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/testExcel.xls");
@@ -52,10 +52,10 @@ public class DatabaseToExcel {
 		//创建工作簿
 		XSSFWorkbook workbook = new XSSFWorkbook();
 		//创建工作表
-		XSSFSheet sheet = workbook.createSheet();
+		Sheet sheet = workbook.createSheet();
 		//创建第一行
-		XSSFRow row = sheet.createRow(0);
-		XSSFCell cell = null;
+		Row row = sheet.createRow(0);
+		Cell cell = null;
 		//插入第一行
 		for (int i=0;i<title.length;i++){
 			cell = row.createCell(i);
@@ -63,8 +63,8 @@ public class DatabaseToExcel {
 		}
 		//追加数据
 		for (int i=1;i<10;i++){
-			XSSFRow nextRow = sheet.createRow(i);
-			XSSFCell cell2 = nextRow.createCell(0);
+			Row nextRow = sheet.createRow(i);
+			Cell cell2 = nextRow.createCell(0);
 			cell2.setCellValue("a");
 		}
 		//创建一个文件
