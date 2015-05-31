@@ -19,12 +19,12 @@ SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     	<label>你好，<%=request.getSession().getAttribute("staffId")%></label>
     	<form name="logout" action="<%=path%>/servlet.do" method="post">
   				<label for="logout">登出</label>
-  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input id="logout" type="submit" value="进入"<%-- style="display:none;"--%>>
   				<input type="hidden" name="operate" value="logout">
 		</form>
 		<form name="backToApp" action="<%=path%>/servlet.do" method="post">
 			<label for="backToApp">返回主菜单</label>
-			<input id="backToApp" type="submit" value="进入" style="display:none;">
+			<input id="backToApp" type="submit" value="进入"<%-- style="display:none;"--%>>
 			<input type="hidden" name="operate" value="backToApp">
 		</form>
 	</div>

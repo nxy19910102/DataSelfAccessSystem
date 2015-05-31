@@ -13,10 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import applicationDAO.BackupDAO;
 import applicationDAO.DocumentBackupDAO;
 
 public class UploadServlet extends HttpServlet {
-	private static final long serialVersionUID = 4689917345506137384L;
+	private static final long serialVersionUID = 2L;
 
 	public void destroy() {
 	}
@@ -31,13 +33,17 @@ public class UploadServlet extends HttpServlet {
 		String filePath = null;
 		String uploadKey = request.getParameter("uploadKey");
 		switch (uploadKey) {
-		case ("documentBackupAttachmentUpload"):
+		case ("documentBackupAttachmentUpload"):{
 			int target = Integer.parseInt(request.getParameter("target"));
 			int targetYear = Integer.parseInt(request.getParameter("targetYear"));
 			int targetSeq = Integer.parseInt(request.getParameter("targetSeq"));
 			filePath = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/documentBackup";
 //			filePath = "E:/talent_path/Myeclipse/DataSelfAccessSystem/WebRoot/files/documentBackup";
 //			filePath = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/documentBackup";
+			File file = new File(filePath);
+			if (!file.exists()){
+				file.mkdir();
+			}
 			String saveFile = this.doUpload (request, uploadKey, filePath);
 			DocumentBackupDAO documentBackupDAO = new DocumentBackupDAO();
 			try {
@@ -48,6 +54,30 @@ public class UploadServlet extends HttpServlet {
 			//回到原文件
 			request.getRequestDispatcher("servlet.do?operate=" + uploadKey).forward(request, response);
 			break;
+		}
+		case ("backupAttachmentUpload"):{
+			int target = Integer.parseInt(request.getParameter("target"));
+			int targetYear = Integer.parseInt(request.getParameter("targetYear"));
+			int targetSeq = Integer.parseInt(request.getParameter("targetSeq"));
+			filePath = "D:/talent_path/myeclipse/DataSelfAccessSystem/WebRoot/files/backup";
+//			filePath = "E:/talent_path/Myeclipse/DataSelfAccessSystem/WebRoot/files/backup";
+//			filePath = "D:/WEBROOT/DataSelfAccessSystem/WebRoot/files/backup";
+			//设置保存上传文件的路径
+			File file = new File(filePath);
+			if (!file.exists()){
+				file.mkdir();
+			}
+			String saveFile = this.doUpload (request, uploadKey, filePath);
+			BackupDAO backupDAO = new BackupDAO();
+			try {
+				backupDAO.addBackupAttachment(target, targetYear, targetSeq, saveFile);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			//回到原文件
+			request.getRequestDispatcher("servlet.do?operate=" + uploadKey).forward(request, response);
+			break;
+		}
 		}
 	}
 
@@ -97,21 +127,36 @@ public class UploadServlet extends HttpServlet {
 			}
 		}
 		endPosition--;
-		//设置保存上传文件的路径
-		File fileupload = new File(filePath);
-		if (!fileupload.exists()){
-			fileupload.mkdir();
-		}
 		//获取上传文件名称
 		randomFile.seek(0);
 		randomFile.readLine();
 		String str = randomFile.readLine();
-		//webkit
-//		int beginIndex = str.lastIndexOf("filename=\"") + 10;
-		//IE
-//		int beginIndex = str.lastIndexOf("\\") + 1;
-		//后缀
+//		String header = request.getHeader("user-agent");
+//		String brower = "";
+//		if (header.indexOf("Chrome") != -1){
+//			brower = "Chrome";
+//		} else if (header.indexOf("IE") != -1){
+//			//IE6
+//			brower = "IE";
+//		}
+		//前缀
+//		int beginIndex = 0;
+//		switch (brower){
+//		case ("Chrome"):{
+//			beginIndex = str.lastIndexOf("filename=\"") + 10;
+//			break;
+//		}
+//		case ("IE"):{
+//			beginIndex = str.lastIndexOf("\\") + 1;
+//			break;
+//		}
+//		case (""):{
+//			beginIndex = str.lastIndexOf(".");
+//			break;
+//		}
+//		}
 		int beginIndex = str.lastIndexOf(".");
+		//后缀
 		int endIndex = str.lastIndexOf("\"");
 		
 		String fileNameSuffix = str.substring(beginIndex, endIndex);
@@ -135,13 +180,19 @@ public class UploadServlet extends HttpServlet {
 	
 	//使用相应规则生成文件名
 	public String generateFilename (HttpServletRequest request, String uploadKey, String fileNameSuffix) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 		switch (uploadKey) {
-		case ("documentBackupAttachmentUpload"):
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+		case ("documentBackupAttachmentUpload"):{
 			String docDepartment = request.getParameter("docDepartment");
 			String docStaff = request.getParameter("docStaff");
 			String filename = docDepartment + "-" + docStaff + "-" + sdf.format(new Date()) + fileNameSuffix;
 			return filename;
+		}
+		case ("backupAttachmentUpload"):{
+			String accNbr = request.getParameter("accNbr");
+			String filename = sdf.format(new Date()) + "-" + accNbr + fileNameSuffix;
+			return filename;
+		}
 		default :
 		return "none";
 		}

@@ -1,16 +1,18 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="java.util.*" contentType="text/html; charset=utf-8"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-request.setCharacterEncoding("utf-8");
+String uploadKey = request.getParameter("uploadKey");
+String target = request.getParameter("target");
+String targetYear = request.getParameter("targetYear");
+String targetSeq = request.getParameter("targetSeq");
+String accNbr = request.getParameter("accNbr");
  %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     <title>Data Self-Access System</title>
-	<link href="styles/index.css" rel="stylesheet" type="text/css">
   </head>
   <body>
   	<div class="main">
@@ -26,11 +28,11 @@ request.setCharacterEncoding("utf-8");
 			<input type="hidden" name="operate" value="backToApp">
 		</form>
 	</div>
-    <div class="main">
-    	<h1>错误上传成功</h1>
-    	<h2>您的留言是：</h2>
-    	<h3><%=request.getParameter("detail") %></h3>
-    	<h2><a href="<%=path %>/index.jsp">返回首页</a></h2>
-    </div>
+    <h1>备案管理</h1>
+    <form name="backupAttachmentUpload" action="<%=path%>/servlet.upload?uploadKey=<%=uploadKey%>&target=<%=target%>&targetYear=<%=targetYear%>&targetSeq=<%=targetSeq%>&accNbr=<%=accNbr%>" method="post" enctype="multipart/form-data">
+    	<label for="target">选择上传文件：</label>
+    	<input name="uploadFile" type="file">
+		<input type="submit" value="提交">
+    </form>
   </body>
 </html>

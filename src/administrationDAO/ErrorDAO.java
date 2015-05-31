@@ -13,16 +13,15 @@ import util.DBConnect;
 public class ErrorDAO {
 	
 //	DoServlet.java
-	public void addError(String staffId,String url,String serverPath,String detail) throws SQLException{
+	public void addError(String staffId,String serverPath,String detail) throws SQLException{
 		Connection conn = DBConnect.getConnection();
 		String sql = "insert into nxy_dsas_error ("
-			+"id,staff_id,url,server_path,detail,state,eff_date"
-			+") values (nxy_dsas_error_id.nextval,?,?,?,?,1,sysdate)";
+			+"id,staff_id,server_path,detail,state,eff_date"
+			+") values (nxy_dsas_error_id.nextval,?,?,?,1,sysdate)";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setString(1, staffId);
-		ps.setString(2, url);
-		ps.setString(3, serverPath);
-		ps.setString(4, detail);
+		ps.setString(2, serverPath);
+		ps.setString(3, detail);
 		ps.execute();
 		ps.close();
 	}
@@ -39,7 +38,6 @@ public class ErrorDAO {
 			error = new Error500();
 			error.setId(rs.getLong("id"));
 			error.setStaffId(rs.getString("staff_id"));
-			error.setUrl(rs.getString("url"));
 			error.setDetail(rs.getString("detail"));
 			error.setStateString(rs.getInt("state"));
 			error.setEffDateString(rs.getString("eff_date").substring(0, 19));

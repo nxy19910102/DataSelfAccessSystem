@@ -1,0 +1,103 @@
+eclipse快捷键
+	Alt+/ 自动补充
+		syso System.out.println();
+	Ctrl+/ 注释
+	Ctrl+1 截取异常
+	Ctrl+d 删除行
+  Ctrl+Shift+o 导入类
+
+变量
+	String name = null;
+强制转换
+	int a = (int) b;
+	
+运算符
+	算数运算符	+,-,*,/,%,++,--
+	赋值运算符	=,+=,-=,*=,/=,%=
+	比较运算符	>,<,>=,<=,==,!=
+	逻辑运算符	&&,||,!,^
+
+条件语句
+	if (条件1) {
+		语句1;
+	} else {
+		语句2;
+	}
+	
+	switch(条件1) {
+	case 值1:{
+		语句1;
+		break;
+	}
+	default:
+
+循环语句
+	while (条件1) {
+		语句1;
+	}
+	
+	do {
+		语句1;
+	} while (条件1);
+	
+  for (int i=0;i<n;i++) {
+	}
+	
+	foreach循环
+	for (Object obj : obj1) {
+	}
+
+--------------------------------------------------
+数组
+	int[] scores = new int[5];
+	
+  Arrays 方法
+  	List asList(E element) 将数组类型转换为List类型
+  	 sort() 数组排序
+  	String toString() 将数组转换为字符串，用逗号分隔
+
+--------------------------------------------------
+Java集合框架体系结构
+	Collection(I) 集合
+		List(I) 序列：有序
+			ArrayList(C) 数组序列
+			LinkedList(C) 链表
+		Queue(I) 队列
+			LinkedList(C) 链表
+		Set(I) 集：无序，不可重复
+			HashSet(C) 哈希集
+	Map<Key,value>(I) 对集合
+			HashMap(C) 哈希表
+		Entry(C) 键值对
+	
+	Collection 方法
+		boolean add(E element) 添加
+		boolean addAll(Colletion c) 添加
+		Iterator<E> iterator() 迭代器
+		int size() 得到集合长度
+
+	List 方法
+		boolean add(int index,E element) 添加元素到指定位置（0位初始位置）
+		boolean addAll(int index,Colletion c) 添加集合到指定位置
+		Object get(int index) 得到该序号的元素
+		E remove(int index) 移除指定位置的元素
+		boolean removeAll(Collection<E> c) 移除c中包含的所有元素
+		E remove(Object o) 从列表中移除第一次出现的指定元素
+		E set(int index E element) 修改指定位置的元素
+	
+--------------------------------------------------
+迭代器
+	Iterator(I) 迭代器
+	Iterator 方法
+		boolean hasNext() 判断是否有下一个元素 
+		E next()	得到下一个元素
+	
+--------------------------------------------------
+文本输入
+	Scanner(C) 扫描器
+	Scanner 方法
+		String next() 返回接下来输入的内容（回车符结束）
+	Scanner 用法
+		//用以将控制台内容输入程序
+		  Scanner s = new Scanner(System.in);
+      String str = s.next();

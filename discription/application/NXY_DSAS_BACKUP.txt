@@ -1,0 +1,28 @@
+--drop table NXY_DSAS_BACKUP;
+create table NXY_DSAS_BACKUP (
+  id number(10),
+  target number(1),
+  target_year number(4),
+  target_seq number(10),
+  apply_staff varchar2(200),
+  approve_staff varchar2(200),
+  acc_nbr varchar2(2000),
+  offer_old varchar2(200),
+  offer_new varchar2(200),
+  promotion varchar2(200),
+  eff_date varchar2(8),
+  exp_date varchar2(8),
+  note varchar2(2000),
+  attachment_address varchar2(200),
+  state number(1));
+drop sequence NXY_DSAS_BACKUP_ID;
+create sequence NXY_DSAS_BACKUP_ID increment by 1 start with 1 nomaxvalue nocycle;
+insert into NXY_DSAS_BACKUP (id,target,target_year,target_seq,apply_staff,
+ approve_staff,acc_nbr,offer_old,offer_new,promotion,eff_date,exp_date,note,
+ attachment_address,state) values (
+  0,0,to_number(to_char(sysdate,'yyyy')),0,'apply_staff','approve_staff',
+  'acc_nbr','offer_old','offer_new','promotion',to_char(sysdate,'yyyymmdd'),
+  to_char(sysdate+100,'yyyymmdd'),'note','attachment_address',0);
+commit;
+--decode(target,1,'签报',2,'内部联系单','其他')
+--decode(state,0,'正常',1,'失效')

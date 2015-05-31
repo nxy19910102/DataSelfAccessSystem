@@ -5,7 +5,6 @@ import java.util.Date;
 public class Error500 {
 	private Long id;
 	private String staffId;
-	private String url;
 	private String serverPath;
 	private String detail;
 	private int state;
@@ -26,12 +25,6 @@ public class Error500 {
 	}
 	public void setStaffId(String staffId) {
 		this.staffId = staffId;
-	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
 	}
 	public String getServerPath() {
 		return serverPath;

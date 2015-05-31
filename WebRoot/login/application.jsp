@@ -26,7 +26,7 @@ if (authorityDAO.checkAdministrator(request,staffId)){
   		<div>
   			<form name="logout" action="<%=path%>/servlet.do" method="post">
   				<label for="logout">登出</label>
-  				<input id="logout" type="submit" value="进入" style="display:none;">
+  				<input id="logout" type="submit" value="进入"<%-- style="display:none;"--%>>
   				<input type="hidden" name="operate" value="logout">
   			</form>
   		</div>
@@ -44,7 +44,7 @@ if (authorityDAO.checkAdministrator(request,staffId)){
   				<input type="hidden" name="operate" value="appToAdmin">
   			</form>
   		</div>
-  		<div>
+  		<%-- <div>
   			<form name="documentBackup" action="<%=path%>/servlet.do" method="post">
   				<label for="documentBackup">业务报备</label>
   				<input id="documentBackup" type="submit" value="进入">
@@ -57,19 +57,19 @@ if (authorityDAO.checkAdministrator(request,staffId)){
   				<input id="documentBackupQuery" type="submit" value="进入">
   				<input type="hidden" name="operate" value="documentBackupQuery">
   			</form>
-  		</div>
+  		</div> --%>
   		<div>
-  			<form name="upload" action="<%=path%>/servlet.do" method="post">
-  				<label for="upload">上传测试</label>
-  				<input id="upload" type="submit" value="进入">
-  				<input type="hidden" name="operate" value="upload">
+  			<form name="backup" action="<%=path%>/servlet.do" method="post">
+  				<label for="backup">备案管理</label>
+  				<input id="backup" type="submit" value="进入">
+  				<input type="hidden" name="operate" value="backup">
   			</form>
   		</div>
   		<div>
-  			<form name="download" action="<%=path%>/servlet.do" method="post">
-  				<label for="download">下载测试</label>
-  				<input id="download" type="submit" value="进入">
-  				<input type="hidden" name="operate" value="download">
+  			<form name="backupQuery" action="<%=path%>/servlet.do" method="post">
+  				<label for="backupQuery">备案查询</label>
+  				<input id="backupQuery" type="submit" value="进入">
+  				<input type="hidden" name="operate" value="backupQuery">
   			</form>
   		</div>
     </div>

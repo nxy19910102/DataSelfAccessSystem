@@ -40,7 +40,7 @@ public class DocumentBackupDAO {
 		return true;
 	}
 	
-//	DoServlet.java
+//	UploadServlet.java
 	public boolean addDocumentBackupAttachment (int target, int targetYear, int targetSeq, String attachmentAddress) throws SQLException{
 			Connection conn = DBConnect.getConnection();
 			String sql = "update NXY_DSAS_DOCUMENT_BACKUP set attachment_address = ? "
@@ -97,7 +97,6 @@ public class DocumentBackupDAO {
 		Connection conn = DBConnect.getConnection();
 		Statement st = conn.createStatement();
 		String sql = stringBufferBuilder.toString();
-		System.out.println(sql);
 		ResultSet rs = st.executeQuery(sql);
 		while (rs.next()){
 			documentBackup = new DocumentBackup();

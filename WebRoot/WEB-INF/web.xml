@@ -46,7 +46,6 @@
         <enabled>true</enabled>
         <async-supported>true</async-supported>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>DownloadServlet</servlet-name>
     <url-pattern>/servlet.download</url-pattern>
@@ -59,7 +58,7 @@
     <async-supported>true</async-supported>
     <init-param>
       <param-name>filterException</param-name>
-      <param-value>index.jsp;loginFailure.jsp;servlet.do;error404;error500;archive_odbc;qf_tz_odbc</param-value>
+      <param-value>index.jsp;loginFailure.jsp;servlet.do;error404;error500;archive_odbc;qf_tz_odbc;TestServlet;</param-value>
     </init-param>
   </filter>
   <filter-mapping>

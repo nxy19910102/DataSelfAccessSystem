@@ -94,7 +94,7 @@ public class StaffDAO {
 
 //	DoServlet.java
 	public boolean judgeLogin(String staffId,String password) throws SQLException{
-		ArrayList<Staff> StaffList = new ArrayList<Staff>();
+		ArrayList<Staff> staffList = new ArrayList<Staff>();
 		Staff staff = null;
 		Connection conn = DBConnect.getConnection();
 		String sql = "select * from nxy_dsas_staff "
@@ -105,7 +105,7 @@ public class StaffDAO {
 			staff = new Staff();
 			staff.setStaffId(rs.getString("staff_id"));
 			staff.setPassword(rs.getString("password"));
-			StaffList.add(staff);
+			staffList.add(staff);
 		}
 		rs.close();
 		st.close();
@@ -113,7 +113,7 @@ public class StaffDAO {
 		Staff staff2 = new Staff();
 		staff2.setStaffId(staffId);
 		staff2.setPassword(password);
-		for (Staff staff1:StaffList){
+		for (Staff staff1:staffList){
 			if (staff2.equals(staff1)){
 				return true;
 			}

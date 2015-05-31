@@ -2,7 +2,6 @@
 create table NXY_DSAS_ERROR (
   id                        number(10),
   staff_id                  varchar2(200),
-  url                       varchar2(1000),
   server_path               varchar2(1000),
   detail                    varchar2(1000),
   state                     number(1),
@@ -10,8 +9,8 @@ create table NXY_DSAS_ERROR (
   exp_date                  date);
 drop sequence nxy_DSAS_error_id;
 create sequence nxy_DSAS_error_id increment by 1 start with 1 nomaxvalue nocycle;
-insert into NXY_DSAS_ERROR (id,staff_id,url,server_path,detail,state,eff_date)
-  values (0,'niuxy3','init','init','init',1,sysdate);
+insert into NXY_DSAS_ERROR (id,staff_id,server_path,detail,state,eff_date)
+  values (0,'niuxy3','init','init',1,sysdate);
 commit;
 --decode(state,0,'已解决',1,'未解决')
 /*public String getStateString() {
